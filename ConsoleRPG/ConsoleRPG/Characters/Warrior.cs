@@ -18,17 +18,19 @@ namespace ConsoleRPG.Characters
             Intelligence = 1;
         }
 
+        /**
         private void ShowStats()
         {
             Console.WriteLine($"Class: {ClassName}" +
                 $"\nStrength: {Strenght}\nDexterity: {Dexterity}\nIntelligence: {Intelligence}");
         }
+        **/
 
         public Warrior()
         {
             InitWariorAttributes();
             Console.WriteLine("A Warrior is born!");
-            ShowStats();
+            // ShowStats();
         }
     }
 }

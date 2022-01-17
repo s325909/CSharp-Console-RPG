@@ -29,11 +29,21 @@ namespace ConsoleRPG
                 Console.WriteLine("Write a number: ");
                 int number = Convert.ToInt32(Console.ReadLine());
 
-                // CHaracter Creation
-                Characters.Character character = new Characters.Warrior();
+                Characters.Character player = new Characters.Warrior();
+                player.ShowStats();
+
+                /**
+                // Character Creation
+                if (number == 0)
+                {
+                    player = new Characters.Warrior();
+                    if (number == 1) player.ShowStats();
+                }
+                **/
 
 
-                if (number < 0) this._gameOver = true;
+
+                    if (number < 0) this._gameOver = true;
                 else Console.WriteLine("You inputted: " + number);
             }
 

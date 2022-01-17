@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleRPG.Characters
 {
-    public abstract class Character
+    public abstract class Character : IAttribute
     {
         // Properties for Character Class
         public string ClassName { get; set; }
@@ -33,5 +33,10 @@ namespace ConsoleRPG.Characters
             Console.WriteLine("Character Creation");
         }
 
+        public void ShowStats()
+        {
+            Console.WriteLine($"Class: {ClassName}" +
+                $"\nStrength: {Strenght}\nDexterity: {Dexterity}\nIntelligence: {Intelligence}");
+        }
     }
 }
