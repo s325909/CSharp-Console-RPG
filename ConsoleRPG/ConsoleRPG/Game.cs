@@ -30,7 +30,10 @@ namespace ConsoleRPG
                 int number = Convert.ToInt32(Console.ReadLine());
 
                 Characters.Character player = new Characters.Warrior();
-                player.ShowStats();
+                player.ShowAttributes();
+
+                // string slot1 = player.Slots[0];
+                // Console.WriteLine(slot1);
 
                 /**
                 // Character Creation

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleRPG.Characters
 {
@@ -13,18 +9,11 @@ namespace ConsoleRPG.Characters
         private void InitWariorAttributes()
         {
             ClassName = "WARRIOR";
+            Level = 1;
             Strenght = 5;
             Dexterity = 2;
             Intelligence = 1;
         }
-
-        /**
-        private void ShowStats()
-        {
-            Console.WriteLine($"Class: {ClassName}" +
-                $"\nStrength: {Strenght}\nDexterity: {Dexterity}\nIntelligence: {Intelligence}");
-        }
-        **/
 
         public Warrior()
         {
