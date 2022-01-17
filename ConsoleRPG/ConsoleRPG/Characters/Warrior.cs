@@ -8,8 +8,6 @@ namespace ConsoleRPG.Characters
 
         private void InitWariorAttributes()
         {
-            // ClassName = GetType().Name;
-
             BaseAttributes = new Attributes.Attribute(5, 2, 1); // (STR, DEX, INT)
         }
 

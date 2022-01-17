@@ -9,15 +9,6 @@ namespace ConsoleRPG.Characters
         public string ClassName { get; set; }
         public int Level { get; set; }
 
-        /**
-        public int Strenght { get; set; }
-        public int Dexterity { get; set; }
-        public int Intelligence { get; set; }
-        **/
-
-        // public Attribute baseAttributes; 
-        // public Attribute totalAttributes; 
-
         public Attributes.Attribute BaseAttributes;
         public Attributes.Attribute TotalAttributes; 
 
@@ -28,7 +19,6 @@ namespace ConsoleRPG.Characters
 
         private void InitCharacter()
         {
-            // ClassName = "CHARACTER";
             ClassName = GetType().Name;
             Level = 1;
 
