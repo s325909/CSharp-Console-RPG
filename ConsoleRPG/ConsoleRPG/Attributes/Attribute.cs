@@ -12,13 +12,11 @@ namespace ConsoleRPG.Attributes
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
 
-        //Constructor
+        //Constructors
         public Attribute()
         {
 
         }
-
-
         public Attribute(int STR, int DEX, int INT) 
         {
             Strenght = STR;

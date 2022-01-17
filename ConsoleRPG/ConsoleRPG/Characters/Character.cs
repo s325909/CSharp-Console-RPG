@@ -9,6 +9,8 @@ namespace ConsoleRPG.Characters
         public string ClassName { get; set; }
         public int Level { get; set; }
 
+        public int[] Gains { get; set; }  
+
         public Attributes.Attribute BaseAttributes;
         public Attributes.Attribute TotalAttributes; 
 
@@ -24,7 +26,6 @@ namespace ConsoleRPG.Characters
 
             //TotalAttributes = new Attributes.Attribute(0, 0, 0);
             BaseAttributes = new Attributes.Attribute();
-            Console.WriteLine("Character Strenght: " + BaseAttributes.Strenght);
 
             Equipment = new Dictionary<string, string>()
             {
@@ -65,7 +66,7 @@ namespace ConsoleRPG.Characters
             {
                 equipment += string.Format("| {0} Slot: {1}", kvp.Key, kvp.Value);
             }
-            Console.WriteLine(equipment + " |");
+           // Console.WriteLine(equipment + " |");
         }
     }
 }

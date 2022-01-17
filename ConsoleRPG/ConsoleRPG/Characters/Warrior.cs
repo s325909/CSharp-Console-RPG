@@ -7,23 +7,22 @@ namespace ConsoleRPG.Characters
 
         private void InitWariorAttributes()
         {
-            // BaseAttributes = new Attributes.Attribute(5, 2, 1); // (STR, DEX, INT)
-            // BaseAttributes.Dexterity = 2;
-            // BaseAttributes.AddAttributes(5, 2, 1); 
-
             AddAttributes(5, 2, 1); // (STR, DEX, INT)
-
-            Console.WriteLine("LEVELLING UP");
-            AddAttributes(3, 2, 1); // (STR, DEX, INT)
+            Gains = new[] { 3, 2, 1 };
+            Console.WriteLine($"{ClassName} gains:\n" +
+                $" {Gains[0]} strenght | {Gains[1]} dexterity | {Gains[2]} intelligens");
         }
-
         
-
+        // Constructor
         public Warrior()
         {
             InitWariorAttributes();
             Console.WriteLine($"A {ClassName} is born!");
+        }
 
+        public void GainAttributes()   // when levelling up
+        {
+            AddAttributes(3, 2, 1); // (STR, DEX, INT)
         }
     }
 }
