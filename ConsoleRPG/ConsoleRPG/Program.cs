@@ -2,11 +2,14 @@
 
 namespace ConsoleRPG
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to Console RPG, your adventure starts here!");
+
+            Game game = new();
+            game.run();
         }
     }
 }
