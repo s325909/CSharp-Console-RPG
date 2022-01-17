@@ -28,7 +28,8 @@ namespace ConsoleRPG.Characters
 
         private void InitCharacter()
         {
-            ClassName = "CHARACTER";
+            // ClassName = "CHARACTER";
+            ClassName = GetType().Name;
             Level = 1;
 
             TotalAttributes = new Attributes.Attribute(0, 0, 0);

@@ -8,7 +8,7 @@ namespace ConsoleRPG.Characters
 
         private void InitWariorAttributes()
         {
-            ClassName = GetType().Name;
+            // ClassName = GetType().Name;
 
             BaseAttributes = new Attributes.Attribute(5, 2, 1); // (STR, DEX, INT)
         }
@@ -16,9 +16,8 @@ namespace ConsoleRPG.Characters
         public Warrior()
         {
             InitWariorAttributes();
-            Console.WriteLine("A Warrior is born!");
-            // ShowStats();
-            // baseAttributes = new Attribute(1, 2, 3);
+            Console.WriteLine($"A {ClassName} is born!");
+
         }
     }
 }
