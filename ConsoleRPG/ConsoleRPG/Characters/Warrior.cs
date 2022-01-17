@@ -8,11 +8,9 @@ namespace ConsoleRPG.Characters
 
         private void InitWariorAttributes()
         {
-            ClassName = "WARRIOR";
-            Level = 1;
-            Strenght = 5;
-            Dexterity = 2;
-            Intelligence = 1;
+            ClassName = GetType().Name;
+
+            BaseAttributes = new Attributes.Attribute(5, 2, 1); // (STR, DEX, INT)
         }
 
         public Warrior()
@@ -20,6 +18,7 @@ namespace ConsoleRPG.Characters
             InitWariorAttributes();
             Console.WriteLine("A Warrior is born!");
             // ShowStats();
+            // baseAttributes = new Attribute(1, 2, 3);
         }
     }
 }
