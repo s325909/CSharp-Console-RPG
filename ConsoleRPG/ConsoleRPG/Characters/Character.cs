@@ -22,7 +22,9 @@ namespace ConsoleRPG.Characters
             ClassName = GetType().Name;
             Level = 1;
 
-            TotalAttributes = new Attributes.Attribute(0, 0, 0);
+            //TotalAttributes = new Attributes.Attribute(0, 0, 0);
+            BaseAttributes = new Attributes.Attribute();
+            Console.WriteLine("Character Strenght: " + BaseAttributes.Strenght);
 
             Equipment = new Dictionary<string, string>()
             {
@@ -38,6 +40,13 @@ namespace ConsoleRPG.Characters
         {
             InitCharacter();
             Console.WriteLine("Character Creation");
+        }
+
+        public void AddAttributes(int STR, int DEX, int INT)
+        {
+            BaseAttributes.Strenght += STR;
+            BaseAttributes.Dexterity += DEX;
+            BaseAttributes.Intelligence += INT;
         }
 
         public void ShowAttributes()
