@@ -9,14 +9,29 @@ namespace ConsoleRPG.Characters
     public abstract class Character
     {
         // Properties for Character Class
-        public int ClassName { get; set; }
+        public string ClassName { get; set; }
         public int Strenght { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public Dictionary<string, string> Equipment { get; set; }
 
+        // Constructors
+        public Character() 
+        {
+            this.ClassName = "CHARACTER";
+            this.Strenght = 0;
+            this.Dexterity = 0;
+            this.Intelligence = 0;
 
-        // public Character() {}
+            this.Equipment = new Dictionary<string, string>()
+            {
+                { "HEAD", "" },
+                { "BODY", "" },
+                { "LEGS", "" },
+                { "WEAPON", "" },
+            };
+            Console.WriteLine("Character Creation");
+        }
 
     }
 }

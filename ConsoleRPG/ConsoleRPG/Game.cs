@@ -29,6 +29,10 @@ namespace ConsoleRPG
                 Console.WriteLine("Write a number: ");
                 int number = Convert.ToInt32(Console.ReadLine());
 
+                // CHaracter Creation
+                Characters.Character character = new Characters.Warrior();
+
+
                 if (number < 0) this._gameOver = true;
                 else Console.WriteLine("You inputted: " + number);
             }

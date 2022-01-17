@@ -10,8 +10,6 @@ namespace ConsoleRPG
 
             Game game = new();
             game.run();
-
-            // Characters.Character character = new();
         }
     }
 }
