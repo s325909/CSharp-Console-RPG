@@ -28,18 +28,9 @@ namespace ConsoleRPG
             CharacterCreation();
 
 
-            Console.WriteLine("\nLEVEL UP");
-            player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
-            player.ShowAttributes();
-
-            Console.WriteLine("\nLEVEL UP");
-            player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
-            player.ShowAttributes();
-
             while (!this._gameOver)
             {
-
-                /*
+                Console.WriteLine("0: Game Over | 1: Show Stats | 2: Show Equipment | 3: Level Up");
                 switch (Console.ReadLine())
                 {
                     case "0":
@@ -47,20 +38,20 @@ namespace ConsoleRPG
                         _gameOver = true;
                         break;
                     case "1":
-                        Console.WriteLine("CASE 1: Character");
-                        CharacterCreation();
+                        Console.WriteLine("CASE 1: Show Stats");
+                        player.ShowAttributes();
                         break;
                     case "2":
-                        Console.WriteLine("CASE 2: Stats");
+                        Console.WriteLine("CASE 2: Show Equipment");
                         player.ShowAttributes();
                         break;
                     case "3":
-                        Console.WriteLine("CASE 0");
+                        Console.WriteLine("CASE 3: Level Up");
+                        player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
                         break;
                     default:
                         break;
                 }
-                */
 
                 // if (number < 0) this._gameOver = true;
                 // else Console.WriteLine("You inputted: " + number);
@@ -68,6 +59,12 @@ namespace ConsoleRPG
 
             
             Console.WriteLine("Ending game...");
+        }
+
+        private void ShowGameOptions()
+        {
+            Console.WriteLine("--------------------------------------" +
+                "1: Show Stats\n   2: Equpments\n   3: Rouge\n   4: Warrior");
         }
 
         private void CharacterCreation()
