@@ -58,7 +58,7 @@ namespace ConsoleRPG.Characters
             Console.WriteLine($"Class: {ClassName} | Level: {Level}\n" +
                 $"Strength: {BaseAttributes.Strenght}\n" +
                 $"Dexterity: {BaseAttributes.Dexterity}\n" +
-                $"Intelligence: {BaseAttributes.Intelligence}");
+                $"Intelligence: {BaseAttributes.Intelligence}\n");
 
             // print the equipment dictionary to console
             string equipment = "";

@@ -34,19 +34,19 @@ namespace ConsoleRPG
                 switch (Console.ReadLine())
                 {
                     case "0":
-                        Console.WriteLine("CASE 0: GAME OVER!");
+                        Console.WriteLine("\nCASE 0: GAME OVER!");
                         _gameOver = true;
                         break;
                     case "1":
-                        Console.WriteLine("CASE 1: Show Stats");
+                        Console.WriteLine("\nCASE 1: Show Stats");
                         player.ShowAttributes();
                         break;
                     case "2":
-                        Console.WriteLine("CASE 2: Show Equipment");
+                        Console.WriteLine("\nCASE 2: Show Equipment");
                         player.ShowAttributes();
                         break;
                     case "3":
-                        Console.WriteLine("CASE 3: Level Up");
+                        Console.WriteLine("\nCASE 3: Level Up");
                         player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
                         break;
                     default:
@@ -59,12 +59,6 @@ namespace ConsoleRPG
 
             
             Console.WriteLine("Ending game...");
-        }
-
-        private void ShowGameOptions()
-        {
-            Console.WriteLine("--------------------------------------" +
-                "1: Show Stats\n   2: Equpments\n   3: Rouge\n   4: Warrior");
         }
 
         private void CharacterCreation()
