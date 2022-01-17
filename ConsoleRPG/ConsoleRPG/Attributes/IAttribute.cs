@@ -8,6 +8,8 @@ namespace ConsoleRPG.Characters
 {
     public interface IAttribute
     {
-        public void ShowAttributes();
+        // public abstract void AddAttributes();
+
+        public abstract void ShowAttributes();
     }
 }
