@@ -47,7 +47,8 @@ namespace ConsoleRPG
                         break;
                     case "3":
                         Console.WriteLine("\nCASE 3: Level Up");
-                        player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
+                        // player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
+                        player.GainAttributes();
                         break;
                     default:
                         break;

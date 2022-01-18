@@ -50,6 +50,14 @@ namespace ConsoleRPG.Characters
             BaseAttributes.Intelligence += INT;
         }
 
+        public void GainAttributes()
+        {
+            int STR = Gains[0];
+            int DEX = Gains[1];
+            int INT = Gains[2];
+            AddAttributes(STR, DEX, INT);
+        }
+
         public void ShowAttributes()
         {
             // Console.WriteLine($"Class: {ClassName} | Level: {Level}" +
