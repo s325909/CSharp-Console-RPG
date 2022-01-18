@@ -19,10 +19,5 @@ namespace ConsoleRPG.Characters
             InitWariorAttributes();
             Console.WriteLine($"A {ClassName} is born!");
         }
-
-        public void GainAttributes()   // when levelling up
-        {
-            AddAttributes(3, 2, 1); // (STR, DEX, INT)
-        }
     }
 }
