@@ -14,9 +14,6 @@ namespace ConsoleRPG.Characters
         public Attributes.Attribute BaseAttributes;
         public Attributes.Attribute TotalAttributes; 
 
-        
-        // public string[] Slots { get; set; } 
-
         public Dictionary<string, string> Equipment { get; set; }
 
         private void InitCharacter()
@@ -40,7 +37,18 @@ namespace ConsoleRPG.Characters
         public Character() 
         {
             InitCharacter();
-            Console.WriteLine("Character Creation");
+        }
+
+        public void TotalDamge ()
+        {
+            switch (ClassName)
+            {
+                case "Warior":
+                    // damage += BaseAttributes.Strenght * 1 %; 
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void AddAttributes(int STR, int DEX, int INT)
