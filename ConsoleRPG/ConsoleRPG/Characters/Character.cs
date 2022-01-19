@@ -10,8 +10,8 @@ namespace ConsoleRPG.Characters
         public int Level { get; set; } = 1;
         public int[] LevelGains { get; set; }  
 
-        public Attributes.Attribute BaseAttributes;
-        public Attributes.Attribute TotalAttributes; 
+        public Attributes.PrimeAttribute BaseAttributes;
+        public Attributes.PrimeAttribute TotalAttributes; 
 
         public Dictionary<string, string> Equipment { get; set; }
 
@@ -36,6 +36,7 @@ namespace ConsoleRPG.Characters
         public Character() 
         {
             InitCharacter();
+            Console.WriteLine($"A {ClassName} is born!");
         }
 
         public void TotalDamge ()
@@ -63,6 +64,9 @@ namespace ConsoleRPG.Characters
             int DEX = LevelGains[1];
             int INT = LevelGains[2];
             AddAttributes(STR, DEX, INT);
+
+            Level++;
+            ShowAttributes();
         }
 
         public void ShowAttributes()
