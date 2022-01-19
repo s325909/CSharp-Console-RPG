@@ -1,5 +1,6 @@
 ﻿using System;
 using ConsoleRPG.Attributes;
+using ConsoleRPG.Exceptions;
 using ConsoleRPG.Items;
 
 namespace ConsoleRPG.Characters
@@ -19,42 +20,27 @@ namespace ConsoleRPG.Characters
 
         public Equipment Equipment { get; set; } 
 
+        // Constructors
+        public Character() 
+        {
+            InitCharacter();
+            Console.WriteLine($"\nA {ClassName} is born!\n");
+        }
 
         private void InitCharacter()
         {
             // Get name of character class
             ClassName = GetType().Name;
 
-            //TotalAttributes = new Attributes.Attribute(0, 0, 0);
+            // Init Attributes
             BaseAttributes = new();
             ArmorAttributes = new();
             WeaponAttribute = new();
-            TotalAttributes = new();
-            
 
+            // TotalAttributes = new();
 
+            // Init Equipment
             Equipment = new();
-
-
-
-
-            // Equipment.EquipmentSlots = new();
-
-            // Equipment.EquipmentSlots.GetEnumerator()
-            
-
-            // String[] slots = Enum.GetNames(typeof(Eq EquipSlots));
-
-
-            // Console.WriteLine(Equipment.ToString());
-            // Equipment.EquipmentSlots();
-        }
-
-        // Constructors
-        public Character() 
-        {
-            InitCharacter();
-            Console.WriteLine($"\nA {ClassName} is born!\n");
         }
 
         public void TotalDamge ()
@@ -100,14 +86,11 @@ namespace ConsoleRPG.Characters
 
         public void Equip()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Equipment equipped!");
         }
 
         public void ShowEquiped()
         {
-            // Console.WriteLine(Equipment.EquipmentSlots.ToString());
-            // Console.WriteLine(Equipment.EquipmentSlots);
-
             Console.WriteLine(Equipment.ToString());
             
             /**
@@ -119,6 +102,51 @@ namespace ConsoleRPG.Characters
             }
             // Console.WriteLine(equipment + " |");
             **/
+        }
+
+        public string EquipableItem(Item item)
+        {
+            int level = item.ItemLevel;
+            string slot = item.ItemSlot;
+
+            // check if item is armor or weapon
+            bool isArmor = CheckEquipableArmor(slot);
+            bool isWeapon = CheckEquipableWeapon(slot);
+
+            if (isArmor)
+            {
+                // Custom error thrown if armor ItemLevel is too high
+                if (Level < level) throw new InvalidArmorException("Armor level requirment not met!");
+
+                // Custom error thrown if armor ItemType is not equipable 
+                // if ()
+
+                return "New Weapon Equipped!";
+            }
+
+            if (isWeapon)
+            {
+                // Custom error thrown if weapon ItemLevel is too high
+                if (Level < level) throw new InvalidArmorException("Armor level requirment not met!");
+
+                // Custom error thrown if weapon ItemType is not equipable 
+                // if ()
+
+                return "New Armor Equipped!";
+            }
+
+            return "Item not Equipable";
+        }
+
+        private bool CheckEquipableArmor(string slot) 
+        {
+            if (!slot.Equals("Weapon")) return true;
+            return false;
+        }
+        private bool CheckEquipableWeapon(string slot)
+        {
+            if (slot.Equals("Weapon")) return true;
+            return false;
         }
     }
 }

@@ -7,7 +7,6 @@ namespace ConsoleRPG.Items
     public class Weapon : Item
     {
         // Properties
-        public string[] Weapons { get; set; }
         public double DamagePerSecond { get; set; }
         public WeaponAttribute Attributes { get; set; } 
 
