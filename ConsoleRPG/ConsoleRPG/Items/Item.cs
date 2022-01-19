@@ -5,6 +5,7 @@ namespace ConsoleRPG.Items
     public abstract class Item
     {
         // Properties
+        public string ItemTypeName { get; set; }
         public string ItemName { get; set; }
         public string ItemType { get; set; }
         public string ItemSlot { get; set; }
@@ -13,7 +14,7 @@ namespace ConsoleRPG.Items
         // Constructor
         public Item(string name, string type, string slot, int level)
         {
-            // ItemType = GetType().Name;
+            ItemTypeName = GetType().Name;
             ItemName = name;
             ItemType = type;
             ItemSlot = slot;
@@ -22,7 +23,7 @@ namespace ConsoleRPG.Items
 
         public override string ToString()
         {
-            return $"Type: {ItemType} | Name: {ItemName} | Slot: {ItemSlot} | LVL: {ItemLevel}";
+            return $"ITEM: {ItemTypeName} | Name: {ItemName} | Slot: {ItemSlot} | Type: {ItemType} | LVL: {ItemLevel}";
         }
     }
 }

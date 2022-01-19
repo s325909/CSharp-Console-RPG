@@ -10,6 +10,12 @@ namespace ConsoleRPG.Items
         public EquipSlots Slots { get; set; }
         public Dictionary<string, Item> EquipmentSlots { get; set; }
 
+        public List<Armor> Helmets { get; set; } 
+        public List<Armor> BodyPlates { get; set; }
+        public List<Armor> Leggings { get; set; }
+
+        public List<Weapon> Weapons { get; set; }
+
         // Constructor
         public Equipment()
         {
@@ -25,43 +31,63 @@ namespace ConsoleRPG.Items
                 Console.WriteLine(slot);
             }
 
-            EquipmentSlots[EquipSlots.Head.ToString()] = new Armor("Iron Helmet", "Head",  5);
+            InitBaseEquipments();
 
-            EquipmentSlots[EquipSlots.Weapon.ToString()] = new Weapon("Iron Sword", "Weapon", 5);
-
-            //EquipmentSlots.
-            
-            
-            if (EquipmentSlots.ContainsKey("Head")) // && obj != null
-            {
-                Item item = EquipmentSlots["Head"];
-                if (item != null) Console.WriteLine("HEAD ITEM: " + item.ToString());
-                else Console.WriteLine("NO HEAD ITEM");
-
-                // Console.WriteLine("HEAD: " + con.ToString());
-            }
-
-            if (EquipmentSlots.ContainsKey("Body")) // && obj != null
-            {
-                Item item = EquipmentSlots["Body"];
-                if (item != null) Console.WriteLine("Body ITEM: " + item.ToString());
-                else Console.WriteLine("NO Body ITEM");
-
-                // Console.WriteLine("HEAD: " + con.ToString());
-            }
-
-            if (EquipmentSlots.ContainsKey("Weapon")) // && obj != null
-            {
-                Item item = EquipmentSlots["Weapon"];
-                if (item != null) Console.WriteLine("Weapon ITEM: " + item.ToString());
-                else Console.WriteLine("NO Weapon ITEM");
-
-                // Console.WriteLine("HEAD: " + con.ToString());
-            }
-
+            // PrintArmors();
         }
 
-        // Equipment Slots 
+        // Equipment Slots and Types
         public enum EquipSlots { Head, Body, Legs, Weapon }
+        public enum ArmorTypes { Cloth, Leather, Mail, Plate }
+        public enum WeaponTypes { Axe, Bow, Dagger, Hammer, Staff, Sword, Wand }
+
+
+        /// <summary>
+        /// Method do add basic sets of armors for each slot
+        /// </summary>
+        private void InitBaseEquipments()
+        {
+            Helmets = new();
+            BodyPlates = new();
+            Leggings = new();
+
+            String[] slots = Enum.GetNames(typeof(EquipSlots));
+            String[] armors = Enum.GetNames(typeof(ArmorTypes));
+
+
+
+            foreach (string slot in slots)
+            {
+                if (slot.Equals("Weapon")) break;
+
+                int level = 1;
+                foreach (string armor in armors)
+                {
+                    Helmets.Add(new Armor("Helmet", armor, slot, level));
+                    BodyPlates.Add(new Armor("Chest Plate", armor, slot, level));
+                    Leggings.Add(new Armor("Leggings", armor, slot, level));
+
+                    level += 2;
+                }
+            }
+        }
+
+        public void PrintArmors()
+        {
+            foreach (Armor armor in Helmets)
+            {
+                Console.WriteLine("Helmet " + armor.ToString());
+            }
+
+            foreach (Armor armor in BodyPlates)
+            {
+                Console.WriteLine("Body: " + armor.ToString());
+            }
+
+            foreach (Armor armor in Leggings)
+            {
+                Console.WriteLine("Legging " + armor.ToString());
+            }
+        }
     }
 }

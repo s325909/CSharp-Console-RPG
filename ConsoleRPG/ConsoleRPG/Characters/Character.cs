@@ -34,6 +34,9 @@ namespace ConsoleRPG.Characters
             Console.WriteLine("INIT EQUIPMENT");
             Equipment = new();
 
+
+
+
             // Equipment.EquipmentSlots = new();
 
             // Equipment.EquipmentSlots.GetEnumerator()

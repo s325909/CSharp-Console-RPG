@@ -40,6 +40,8 @@ namespace ConsoleRPG
                         break;
                     case "2":
                         Console.WriteLine("\nCASE 2: Show Equipment");
+                        Items.Equipment equipment = new Items.Equipment();
+                        equipment.PrintArmors();
                         player.ShowEquiped();
                         break;
                     case "3":

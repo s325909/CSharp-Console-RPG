@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleRPG.Items
 {
     public class Weapon : Item
     {
-        public string[] Weapons { get; set; } 
+        // Properties
+        public string[] Weapons { get; set; }
 
-        public Weapon(string name, string slot, int level) : base(name, slot, level)
+        // public List<Weapon> 
+
+        // Constructor
+        public Weapon(string name, string type, string slot, int level) : base(name, type, slot, level)
         {
             Weapons = Enum.GetNames(typeof(WeaponTypes));
             foreach (string weapon in Weapons)
@@ -14,7 +19,6 @@ namespace ConsoleRPG.Items
                 Console.WriteLine("Weapon: " + weapon);
             }
         }
-
 
         public enum WeaponTypes { Axe, Bow, Dagger, Hammer, Staff, Sword, Wand }
     }
