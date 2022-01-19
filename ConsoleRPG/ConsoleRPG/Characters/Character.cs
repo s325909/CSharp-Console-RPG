@@ -10,7 +10,12 @@ namespace ConsoleRPG.Characters
         // Properties for Character Class
         public string ClassName { get; set; }
         public int Level { get; set; } = 1;
+
         public int[] LevelGains { get; set; }
+        public string[] EquipableArmorTypes { get; set; }
+        public string[] EquipableWeaponTypes { get; set; }
+
+        public Equipment Equipment { get; set; }
 
         public PrimeAttribute BaseAttributes { get; set; }
         public PrimeAttribute ArmorAttributes { get; set; }  
@@ -18,7 +23,6 @@ namespace ConsoleRPG.Characters
 
         public WeaponAttribute WeaponAttribute { get; set; }
 
-        public Equipment Equipment { get; set; } 
 
         // Constructors
         public Character() 
@@ -116,12 +120,14 @@ namespace ConsoleRPG.Characters
             if (isArmor)
             {
                 // Custom error thrown if armor ItemLevel is too high
-                if (Level < level) throw new InvalidArmorException("Armor level requirment not met!");
+                if (Level < level) 
+                    throw new InvalidArmorException("Armor level requirment not met!");
 
                 // Custom error thrown if armor ItemType is not equipable 
-                // if ()
+                if (!Array.Exists(EquipableArmorTypes, type => type == slot))
+                    throw new InvalidArmorException("Armor type is not equipable for the character class!");
 
-                return "New Weapon Equipped!";
+                return $"New Armor: {item.ItemName} Equipped!";
             }
 
             if (isWeapon)
@@ -130,12 +136,13 @@ namespace ConsoleRPG.Characters
                 if (Level < level) throw new InvalidArmorException("Armor level requirment not met!");
 
                 // Custom error thrown if weapon ItemType is not equipable 
-                // if ()
+                if (!Array.Exists(EquipableWeaponTypes, type => type == slot))
+                    throw new InvalidArmorException("Weapon type is not equipable for the character class!");
 
-                return "New Armor Equipped!";
+                return $"New Weapon: {item.ItemName} Equipped!";
             }
 
-            return "Item not Equipable";
+            return "Item not Equipable...";
         }
 
         private bool CheckEquipableArmor(string slot) 
