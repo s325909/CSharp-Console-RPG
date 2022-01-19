@@ -5,23 +5,23 @@ namespace ConsoleRPG.Items
     public abstract class Item
     {
         // Properties
-        public int ItemLevel { get; set; }
+        public string ItemType { get; set; }
         public string ItemName { get; set; }
         public string ItemSlot { get; set; }
-        public string ItemType { get; set; }
+        public int ItemLevel { get; set; }
 
         // Constructor
-        public Item(int level, string name, string slot, string type)
+        public Item(string name, string slot, int level)
         {
-            ItemLevel = level;
+            ItemType = GetType().Name;
             ItemName = name;
             ItemSlot = slot;
-            ItemType = type;
+            ItemLevel = level;
         }
 
         public override string ToString()
         {
-            return $"LVL: {ItemLevel} | Name: {ItemName} | Slot: {ItemSlot} | Type: {ItemType}";
+            return $"Type: {ItemType} | Name: {ItemName} | Slot: {ItemSlot} | LVL: {ItemLevel}";
         }
     }
 }

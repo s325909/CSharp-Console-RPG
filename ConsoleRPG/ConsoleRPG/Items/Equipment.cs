@@ -27,8 +27,14 @@ namespace ConsoleRPG.Items
                 // EquipmentSlots.Add(slot, new Item(3, "BASIC SWORD", "HEAD", "SWORD"));
                 Console.WriteLine(slot);
             }
+
+            EquipmentSlots[EquipSlots.Head.ToString()] = new Armor("Iron Helmet", "Head",  5);
+
+            EquipmentSlots[EquipSlots.Weapon.ToString()] = new Weapon("Iron Sword", "Weapon", 5);
+
+            //EquipmentSlots.
             
-            /**
+            
             if (EquipmentSlots.ContainsKey("Head")) // && obj != null
             {
                 Item item = EquipmentSlots["Head"];
@@ -37,7 +43,25 @@ namespace ConsoleRPG.Items
 
                 // Console.WriteLine("HEAD: " + con.ToString());
             }
-            **/
+
+            if (EquipmentSlots.ContainsKey("Body")) // && obj != null
+            {
+                Item item = EquipmentSlots["Body"];
+                if (item != null) Console.WriteLine("Body ITEM: " + item.ToString());
+                else Console.WriteLine("NO Body ITEM");
+
+                // Console.WriteLine("HEAD: " + con.ToString());
+            }
+
+            if (EquipmentSlots.ContainsKey("Weapon")) // && obj != null
+            {
+                Item item = EquipmentSlots["Weapon"];
+                if (item != null) Console.WriteLine("Weapon ITEM: " + item.ToString());
+                else Console.WriteLine("NO Weapon ITEM");
+
+                // Console.WriteLine("HEAD: " + con.ToString());
+            }
+
         }
     }
 }
