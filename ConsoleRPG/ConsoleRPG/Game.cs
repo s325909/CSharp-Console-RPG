@@ -43,7 +43,7 @@ namespace ConsoleRPG
                         break;
                     case "2":
                         Console.WriteLine("\nCASE 2: Show Equipment");
-                        player.ShowAttributes();
+                        player.ShowEquiped();
                         break;
                     case "3":
                         Console.WriteLine("\nCASE 3: Level Up");

@@ -1,19 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace ConsoleRPG.Characters
 {
-    public abstract class Character : IAttribute
+    public abstract class Character : IAttribute, IEquip
     {
         // Properties for Character Class
         public string ClassName { get; set; }
         public int Level { get; set; } = 1;
-        public int[] LevelGains { get; set; }  
+        public int[] LevelGains { get; set; }
 
-        public Attributes.PrimeAttribute BaseAttributes;
-        public Attributes.PrimeAttribute TotalAttributes; 
+        public Attributes.PrimeAttribute BaseAttributes { get; set; }
+        public Attributes.PrimeAttribute TotalAttributes { get; set; }
 
-        public Dictionary<string, string> Equipment { get; set; }
+        public Items.Equipment Equipment { get; set; } 
+
+
+
+        // public Dictionary<string, string> Equipment { get; set; }
 
         private void InitCharacter()
         {
@@ -23,13 +26,13 @@ namespace ConsoleRPG.Characters
             //TotalAttributes = new Attributes.Attribute(0, 0, 0);
             BaseAttributes = new();
 
-            Equipment = new Dictionary<string, string>()
-            {
-                { "HEAD", "" },
-                { "BODY", "" },
-                { "LEGS", "" },
-                { "WEAPON", "" },
-            };
+            Console.WriteLine("INIT EQUIPMENT");
+            Equipment = new();
+            // Equipment.EquipmentSlots = new();
+
+
+            // Console.WriteLine(Equipment.ToString());
+            // Equipment.EquipmentSlots();
         }
 
         // Constructors
@@ -78,14 +81,29 @@ namespace ConsoleRPG.Characters
                 $"Strength: {BaseAttributes.Strenght}\n" +
                 $"Dexterity: {BaseAttributes.Dexterity}\n" +
                 $"Intelligence: {BaseAttributes.Intelligence}\n");
+        }
 
+        public void Equip()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowEquiped()
+        {
+            // Console.WriteLine(Equipment.EquipmentSlots.ToString());
+            // Console.WriteLine(Equipment.EquipmentSlots);
+
+            Console.WriteLine(Equipment.ToString());
+            
+            /**
             // print the equipment dictionary to console
             string equipment = "";
             foreach (KeyValuePair<string, string> kvp in Equipment)
             {
                 equipment += string.Format("| {0} Slot: {1}", kvp.Key, kvp.Value);
             }
-           // Console.WriteLine(equipment + " |");
+            // Console.WriteLine(equipment + " |");
+            **/
         }
     }
 }
