@@ -4,6 +4,7 @@ namespace ConsoleRPG.Attributes
 {
     public class PrimeAttribute
     {
+        //Properties 
         public int Strenght { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }

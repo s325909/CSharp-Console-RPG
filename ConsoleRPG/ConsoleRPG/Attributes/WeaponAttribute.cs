@@ -8,6 +8,14 @@ namespace ConsoleRPG.Attributes
 {
     public class WeaponAttribute
     {
+        // Properties 
+        public int Damage { get; set; }
+        public double AttackSpeed { get; set; }
 
+        // Constructor
+        public WeaponAttribute()
+        {
+
+        }
     }
 }

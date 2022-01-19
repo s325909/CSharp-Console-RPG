@@ -12,12 +12,13 @@ namespace ConsoleRPG.Characters
         public int[] LevelGains { get; set; }
 
         public PrimeAttribute BaseAttributes { get; set; }
+        public PrimeAttribute ArmorAttributes { get; set; }  
         public PrimeAttribute TotalAttributes { get; set; }
+
+        public WeaponAttribute WeaponAttribute { get; set; }
 
         public Equipment Equipment { get; set; } 
 
-
-        // public Dictionary<string, string> Equipment { get; set; }
 
         private void InitCharacter()
         {
@@ -26,9 +27,13 @@ namespace ConsoleRPG.Characters
 
             //TotalAttributes = new Attributes.Attribute(0, 0, 0);
             BaseAttributes = new();
+            ArmorAttributes = new();
+            WeaponAttribute = new();
+            TotalAttributes = new();
 
             Console.WriteLine("INIT EQUIPMENT");
             Equipment = new();
+
             // Equipment.EquipmentSlots = new();
 
             // Equipment.EquipmentSlots.GetEnumerator()
