@@ -10,9 +10,6 @@ namespace ConsoleRPG.Items
         public EquipSlots Slots { get; set; }
         public Dictionary<string, Item> EquipmentSlots { get; set; }
 
-        // Equipment Slots 
-        public enum EquipSlots { Head, Body, Legs, Weapon }
-
         // Constructor
         public Equipment()
         {
@@ -63,5 +60,8 @@ namespace ConsoleRPG.Items
             }
 
         }
+
+        // Equipment Slots 
+        public enum EquipSlots { Head, Body, Legs, Weapon }
     }
 }

@@ -1,9 +1,23 @@
-﻿namespace ConsoleRPG.Items
+﻿using System;
+
+namespace ConsoleRPG.Items
 {
-    internal class Armor : Item
+    public class Armor : Item
     {
+        // Properties
+        public string[] Armors { get; set; }
+
         public Armor(string name, string slot, int level) : base(name, slot, level)
         {
+            Armors = Enum.GetNames(typeof(ArmorTypes));
+            foreach (string armor in Armors)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Armor Type: " + armor);
+            }
         }
+
+        // Armor Types
+        public enum ArmorTypes { Cloth, Leather, Mail, Plate}
     }
 }
