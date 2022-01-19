@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleRPG.Characters;
 
 namespace ConsoleRPG
 {
@@ -43,11 +40,12 @@ namespace ConsoleRPG
                         break;
                     case "2":
                         Console.WriteLine("\nCASE 2: Show Equipment");
-                        player.ShowAttributes();
+                        player.ShowEquiped();
                         break;
                     case "3":
                         Console.WriteLine("\nCASE 3: Level Up");
-                        player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
+                        // player.AddAttributes(player.Gains[0], player.Gains[1], player.Gains[2]);
+                        player.GainAttributes();
                         break;
                     default:
                         break;
@@ -64,20 +62,20 @@ namespace ConsoleRPG
         private void CharacterCreation()
         {
             Console.WriteLine("Choose your Character Class\n" +
-                "1: Mage\n   2: Ranger\n   3: Rouge\n   4: Warrior");
+                "  1: Mage\n  2: Ranger\n  3: Rouge\n  4: Warrior");
             switch (Console.ReadLine())
             {
                 case "1":
-                    player = new Characters.Warrior();
+                    player = new Mage();
                     break;
                 case "2":
-                    player = new Characters.Warrior();
+                    player = new Ranger();
                     break;
                 case "3":
-                    player = new Characters.Warrior();
+                    player = new Rouge();
                     break;
                 case "4":
-                    player = new Characters.Warrior();
+                    player = new Warrior();
                     break;
                 default:
                     break;

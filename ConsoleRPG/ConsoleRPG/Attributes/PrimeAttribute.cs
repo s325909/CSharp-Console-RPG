@@ -1,30 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleRPG.Attributes
 {
-    public class Attribute
+    public class PrimeAttribute
     {
         public int Strenght { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
 
         //Constructors
-        public Attribute()
+        public PrimeAttribute()
         {
 
         }
-        public Attribute(int STR, int DEX, int INT) 
+        public PrimeAttribute(int STR, int DEX, int INT) 
         {
             Strenght = STR;
             Dexterity = DEX;
             Intelligence = INT;
         }
 
-        public void AddAttributes(Attribute ATTR)
+        public void AddAttributes(PrimeAttribute ATTR)
         {
             Strenght += ATTR.Strenght;
             Dexterity += ATTR.Dexterity;
