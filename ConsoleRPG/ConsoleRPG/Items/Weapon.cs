@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleRPG.Attributes;
 
 namespace ConsoleRPG.Items
 {
     public class Weapon : Item
     {
-        public Weapon(string name, string slot, int level) : base(name, slot, level)
-        {
+        // Properties
+        public string[] Weapons { get; set; }
+        public double DamagePerSecond { get; set; }
+        public WeaponAttribute Attributes { get; set; } 
 
+        // Constructor
+        public Weapon(string name, string type, string slot, int level, WeaponAttribute attributes) : base(name, type, slot, level)
+        {
+            Attributes = attributes;
+            DamagePerSecond = attributes.BaseDamage * attributes.AttackSpeed;
         }
     }
 }
