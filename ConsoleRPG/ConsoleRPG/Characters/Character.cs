@@ -93,6 +93,7 @@ namespace ConsoleRPG.Characters
             // check if item is armor or weapon
             bool isArmor = CheckEquipableArmor(slot);
             bool isWeapon = CheckEquipableWeapon(slot);
+            // bool isArmor, isWeapon = CheckEquipmentType(slot).Item1;
 
             if (isArmor)
             {
@@ -103,6 +104,9 @@ namespace ConsoleRPG.Characters
                 // Custom error thrown if armor ItemType is not equipable 
                 if (!Array.Exists(EquipableArmorTypes, type => type == slot))
                     throw new InvalidArmorException("Armor type is not equipable for the character class!");
+
+                // Equip item to Equipment (Dictionary) 
+                Equipment.EquipmentSlots[slot] = item;
 
                 return $"New Armor: {item.ItemName} Equipped!";
             }
@@ -115,6 +119,9 @@ namespace ConsoleRPG.Characters
                 // Custom error thrown if weapon ItemType is not equipable 
                 if (!Array.Exists(EquipableWeaponTypes, type => type == slot))
                     throw new InvalidArmorException("Weapon type is not equipable for the character class!");
+
+                // Equip item to Equipment (Dictionary) 
+                Equipment.EquipmentSlots[slot] = item;
 
                 return $"New Weapon: {item.ItemName} Equipped!";
             }
@@ -142,7 +149,6 @@ namespace ConsoleRPG.Characters
             **/
         }
 
-
         private bool CheckEquipableArmor(string slot) 
         {
             if (!slot.Equals("Weapon")) return true;
@@ -152,6 +158,16 @@ namespace ConsoleRPG.Characters
         {
             if (slot.Equals("Weapon")) return true;
             return false;
+        }
+        private Tuple<bool, bool> CheckEquipmentType(string slot)
+        {
+            bool isArmor, isWeapon;
+            isArmor = isWeapon = false;
+
+            if (!slot.Equals("Weapon")) isArmor = true;
+            if (slot.Equals("Weapon")) isWeapon = true;
+
+            return Tuple.Create(isArmor, isWeapon);
         }
     }
 }
