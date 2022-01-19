@@ -8,13 +8,14 @@ namespace ConsoleRPG.Items
     {
         // Properties
         public string[] Weapons { get; set; }
-
         public double DamagePerSecond { get; set; }
+        public WeaponAttribute Attributes { get; set; } 
 
         // Constructor
-        public Weapon(string name, string type, string slot, int level, WeaponAttribute attribute) : base(name, type, slot, level)
+        public Weapon(string name, string type, string slot, int level, WeaponAttribute attributes) : base(name, type, slot, level)
         {
-            DamagePerSecond = attribute.BaseDamage * attribute.AttackSpeed;
+            Attributes = attributes;
+            DamagePerSecond = attributes.BaseDamage * attributes.AttackSpeed;
         }
     }
 }

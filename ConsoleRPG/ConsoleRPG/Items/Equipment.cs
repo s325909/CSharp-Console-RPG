@@ -76,15 +76,20 @@ namespace ConsoleRPG.Items
         {
             Console.WriteLine("\n");
 
-            foreach (Armor armor in Helmets) { Console.WriteLine("Helmet " + armor.ToString()); }
-                 
-            Console.WriteLine("\n");
+            foreach (Armor armor in Helmets)
+            {
+                Console.WriteLine("Helmet " + armor.ToString() + " | STATS: STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " |\n");
+            }
 
-            foreach (Armor armor in BodyPlates) { Console.WriteLine("Body: " + armor.ToString()); }
+            foreach (Armor armor in BodyPlates) 
+            {
+                Console.WriteLine("Helmet " + armor.ToString() + " | STATS: STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " |\n");
+            }
 
-            Console.WriteLine("\n");
-
-            foreach (Armor armor in Leggings) { Console.WriteLine("Legging " + armor.ToString()); }
+            foreach (Armor armor in Leggings) 
+            {
+                Console.WriteLine("Helmet " + armor.ToString() + " | STATS: STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " |\n");
+            }
 
             Console.WriteLine("\n");
 
