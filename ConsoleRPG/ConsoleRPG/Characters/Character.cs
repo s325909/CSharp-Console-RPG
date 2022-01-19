@@ -1,4 +1,6 @@
 ﻿using System;
+using ConsoleRPG.Attributes;
+using ConsoleRPG.Items;
 
 namespace ConsoleRPG.Characters
 {
@@ -9,11 +11,10 @@ namespace ConsoleRPG.Characters
         public int Level { get; set; } = 1;
         public int[] LevelGains { get; set; }
 
-        public Attributes.PrimeAttribute BaseAttributes { get; set; }
-        public Attributes.PrimeAttribute TotalAttributes { get; set; }
+        public PrimeAttribute BaseAttributes { get; set; }
+        public PrimeAttribute TotalAttributes { get; set; }
 
-        public Items.Equipment Equipment { get; set; } 
-
+        public Equipment Equipment { get; set; } 
 
 
         // public Dictionary<string, string> Equipment { get; set; }
@@ -29,6 +30,11 @@ namespace ConsoleRPG.Characters
             Console.WriteLine("INIT EQUIPMENT");
             Equipment = new();
             // Equipment.EquipmentSlots = new();
+
+            // Equipment.EquipmentSlots.GetEnumerator()
+            
+
+            // String[] slots = Enum.GetNames(typeof(Eq EquipSlots));
 
 
             // Console.WriteLine(Equipment.ToString());

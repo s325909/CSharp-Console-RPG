@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleRPG.Characters;
 
 namespace ConsoleRPG
 {
@@ -69,16 +66,16 @@ namespace ConsoleRPG
             switch (Console.ReadLine())
             {
                 case "1":
-                    player = new Characters.Mage();
+                    player = new Mage();
                     break;
                 case "2":
-                    player = new Characters.Ranger();
+                    player = new Ranger();
                     break;
                 case "3":
-                    player = new Characters.Rouge();
+                    player = new Rouge();
                     break;
                 case "4":
-                    player = new Characters.Warrior();
+                    player = new Warrior();
                     break;
                 default:
                     break;
