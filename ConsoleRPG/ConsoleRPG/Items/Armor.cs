@@ -7,12 +7,12 @@ namespace ConsoleRPG.Items
         // Properties
         public string[] Armors { get; set; }
 
+        // Constructor
         public Armor(string name, string slot, int level) : base(name, slot, level)
         {
             Armors = Enum.GetNames(typeof(ArmorTypes));
             foreach (string armor in Armors)
             {
-                Console.WriteLine();
                 Console.WriteLine("Armor Type: " + armor);
             }
         }
