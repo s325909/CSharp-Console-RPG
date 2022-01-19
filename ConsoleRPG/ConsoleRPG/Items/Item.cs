@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleRPG.Items
 {
@@ -21,6 +17,11 @@ namespace ConsoleRPG.Items
             ItemName = name;
             ItemSlot = slot;
             ItemType = type;
+        }
+
+        public override string ToString()
+        {
+            return $"LVL: {ItemLevel} | Name: {ItemName} | Slot: {ItemSlot} | Type: {ItemType}";
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ConsoleRPG.Items
 {
@@ -26,8 +24,20 @@ namespace ConsoleRPG.Items
             foreach(string slot in slots)
             {
                 EquipmentSlots.Add(slot, null);
+                // EquipmentSlots.Add(slot, new Item(3, "BASIC SWORD", "HEAD", "SWORD"));
                 Console.WriteLine(slot);
             }
+            
+            /**
+            if (EquipmentSlots.ContainsKey("Head")) // && obj != null
+            {
+                Item item = EquipmentSlots["Head"];
+                if (item != null) Console.WriteLine("HEAD ITEM: " + item.ToString());
+                else Console.WriteLine("NO HEAD ITEM");
+
+                // Console.WriteLine("HEAD: " + con.ToString());
+            }
+            **/
         }
     }
 }
