@@ -1,5 +1,6 @@
 ﻿using System;
 using ConsoleRPG.Attributes;
+using ConsoleRPG.Exceptions;
 using ConsoleRPG.Items;
 
 namespace ConsoleRPG.Characters
@@ -9,7 +10,12 @@ namespace ConsoleRPG.Characters
         // Properties for Character Class
         public string ClassName { get; set; }
         public int Level { get; set; } = 1;
+
         public int[] LevelGains { get; set; }
+        public string[] EquipableArmorTypes { get; set; }
+        public string[] EquipableWeaponTypes { get; set; }
+
+        public Equipment Equipment { get; set; }
 
         public PrimeAttribute BaseAttributes { get; set; }
         public PrimeAttribute ArmorAttributes { get; set; }  
@@ -17,44 +23,28 @@ namespace ConsoleRPG.Characters
 
         public WeaponAttribute WeaponAttribute { get; set; }
 
-        public Equipment Equipment { get; set; } 
-
-
-        private void InitCharacter()
-        {
-            // Get name of character class
-            ClassName = GetType().Name;
-
-            //TotalAttributes = new Attributes.Attribute(0, 0, 0);
-            BaseAttributes = new();
-            ArmorAttributes = new();
-            WeaponAttribute = new();
-            TotalAttributes = new();
-            
-
-
-            Equipment = new();
-
-
-
-
-            // Equipment.EquipmentSlots = new();
-
-            // Equipment.EquipmentSlots.GetEnumerator()
-            
-
-            // String[] slots = Enum.GetNames(typeof(Eq EquipSlots));
-
-
-            // Console.WriteLine(Equipment.ToString());
-            // Equipment.EquipmentSlots();
-        }
 
         // Constructors
         public Character() 
         {
             InitCharacter();
             Console.WriteLine($"\nA {ClassName} is born!\n");
+        }
+
+        private void InitCharacter()
+        {
+            // Get name of character class
+            ClassName = GetType().Name;
+
+            // Init Attributes
+            BaseAttributes = new();
+            ArmorAttributes = new();
+            WeaponAttribute = new();
+
+            // TotalAttributes = new();
+
+            // Init Equipment
+            Equipment = new();
         }
 
         public void TotalDamge ()
@@ -89,27 +79,65 @@ namespace ConsoleRPG.Characters
 
         public void ShowAttributes()
         {
-            // Console.WriteLine($"Class: {ClassName} | Level: {Level}" +
-            //   $"\nStrength: {Strenght}\nDexterity: {Dexterity}\nIntelligence: {Intelligence}");
-
             Console.WriteLine($"Class: {ClassName} | Level: {Level}\n" +
                 $"Strength: {BaseAttributes.Strenght}\n" +
                 $"Dexterity: {BaseAttributes.Dexterity}\n" +
                 $"Intelligence: {BaseAttributes.Intelligence}\n");
         }
 
+        public string EquipableItemCheck(Item item)
+        {
+            int level = item.ItemLevel;
+            string slot = item.ItemSlot;
+
+            // check if item is armor or weapon
+            bool isArmor = CheckEquipableArmor(slot);
+            bool isWeapon = CheckEquipableWeapon(slot);
+            // bool isArmor, isWeapon = CheckEquipmentType(slot).Item1;
+
+            if (isArmor)
+            {
+                // Custom error thrown if armor ItemLevel is too high
+                if (Level < level) 
+                    throw new InvalidArmorException("Armor level requirment not met!");
+
+                // Custom error thrown if armor ItemType is not equipable 
+                if (!Array.Exists(EquipableArmorTypes, type => type == slot))
+                    throw new InvalidArmorException("Armor type is not equipable for the character class!");
+
+                // Equip item to Equipment (Dictionary) 
+                Equipment.EquipmentSlots[slot] = item;
+
+                return $"New Armor: {item.ItemName} Equipped!";
+            }
+
+            if (isWeapon)
+            {
+                // Custom error thrown if weapon ItemLevel is too high
+                if (Level < level) throw new InvalidArmorException("Armor level requirment not met!");
+
+                // Custom error thrown if weapon ItemType is not equipable 
+                if (!Array.Exists(EquipableWeaponTypes, type => type == slot))
+                    throw new InvalidArmorException("Weapon type is not equipable for the character class!");
+
+                // Equip item to Equipment (Dictionary) 
+                Equipment.EquipmentSlots[slot] = item;
+
+                return $"New Weapon: {item.ItemName} Equipped!";
+            }
+
+            return "Item not Equipable...";
+        }
+
         public void Equip()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Equipment equipped!");
         }
 
         public void ShowEquiped()
         {
-            // Console.WriteLine(Equipment.EquipmentSlots.ToString());
-            // Console.WriteLine(Equipment.EquipmentSlots);
-
             Console.WriteLine(Equipment.ToString());
-            
+
             /**
             // print the equipment dictionary to console
             string equipment = "";
@@ -119,6 +147,27 @@ namespace ConsoleRPG.Characters
             }
             // Console.WriteLine(equipment + " |");
             **/
+        }
+
+        private bool CheckEquipableArmor(string slot) 
+        {
+            if (!slot.Equals("Weapon")) return true;
+            return false;
+        }
+        private bool CheckEquipableWeapon(string slot)
+        {
+            if (slot.Equals("Weapon")) return true;
+            return false;
+        }
+        private Tuple<bool, bool> CheckEquipmentType(string slot)
+        {
+            bool isArmor, isWeapon;
+            isArmor = isWeapon = false;
+
+            if (!slot.Equals("Weapon")) isArmor = true;
+            if (slot.Equals("Weapon")) isWeapon = true;
+
+            return Tuple.Create(isArmor, isWeapon);
         }
     }
 }

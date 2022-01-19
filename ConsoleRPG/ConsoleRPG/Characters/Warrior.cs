@@ -7,12 +7,13 @@ namespace ConsoleRPG.Characters
         // Constructor
         public Warrior()
         {
-            // Character Attributes and Gains (STR, DEX, INT)
+            // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(5, 2, 1);
             LevelGains = new[] { 3, 2, 1 };
 
-            // InitWariorAttributes();
-            // Console.WriteLine($"{Gains[0]} strenght | {Gains[1]} dexterity | {Gains[2]} intelligens");
+            // Character Equipable Armor & Weapon Types 
+            EquipableArmorTypes = new[] { "Axe", "Hammer", "Sword" };
+            EquipableWeaponTypes = new[] { "Mail", "Plate" };
         }
     }
 }

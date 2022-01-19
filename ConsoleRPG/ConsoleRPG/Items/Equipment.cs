@@ -50,11 +50,16 @@ namespace ConsoleRPG.Items
             String[] weapons = Enum.GetNames(typeof(WeaponTypes));
 
             int level = 1;
+            string rarity = "[Common]";
+
             foreach (string armor in armors)
             {
-                Helmets.Add(new Armor("[Common] Helmet", armor, slots[0], level));
-                BodyPlates.Add(new Armor("[Common] Chest Plate", armor, slots[1], level));
-                Leggings.Add(new Armor("[Common] Leggings", armor, slots[2], level));
+                if (level > 1) rarity = "[Rare]";
+                if (level > 5) rarity = "[Legendary]";
+
+                Helmets.Add(new Armor(rarity + " Helmet", armor, slots[0], level));
+                BodyPlates.Add(new Armor(rarity + " Chest Plate", armor, slots[1], level));
+                Leggings.Add(new Armor(rarity + " Leggings", armor, slots[2], level));
 
                 level += 2;   
             }

@@ -11,9 +11,13 @@ namespace ConsoleRPG.Characters
         // Constructor
         public Rouge()
         {
-            // Character base attributes and gains (STR, DEX, INT)
+            // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(2, 6, 1);
             LevelGains = new[] { 1, 4, 1 };
+
+            // Character Equipable Armor & Weapon Types 
+            EquipableArmorTypes = new[] { "Leather", "Mail" };
+            EquipableWeaponTypes = new[] { "Dagger", "Sword" };
         }
     }
 }
