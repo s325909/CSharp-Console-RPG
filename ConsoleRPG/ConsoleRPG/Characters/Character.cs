@@ -79,36 +79,13 @@ namespace ConsoleRPG.Characters
 
         public void ShowAttributes()
         {
-            // Console.WriteLine($"Class: {ClassName} | Level: {Level}" +
-            //   $"\nStrength: {Strenght}\nDexterity: {Dexterity}\nIntelligence: {Intelligence}");
-
             Console.WriteLine($"Class: {ClassName} | Level: {Level}\n" +
                 $"Strength: {BaseAttributes.Strenght}\n" +
                 $"Dexterity: {BaseAttributes.Dexterity}\n" +
                 $"Intelligence: {BaseAttributes.Intelligence}\n");
         }
 
-        public void Equip()
-        {
-            Console.WriteLine("Equipment equipped!");
-        }
-
-        public void ShowEquiped()
-        {
-            Console.WriteLine(Equipment.ToString());
-            
-            /**
-            // print the equipment dictionary to console
-            string equipment = "";
-            foreach (KeyValuePair<string, string> kvp in Equipment)
-            {
-                equipment += string.Format("| {0} Slot: {1}", kvp.Key, kvp.Value);
-            }
-            // Console.WriteLine(equipment + " |");
-            **/
-        }
-
-        public string EquipableItem(Item item)
+        public string EquipableItemCheck(Item item)
         {
             int level = item.ItemLevel;
             string slot = item.ItemSlot;
@@ -144,6 +121,27 @@ namespace ConsoleRPG.Characters
 
             return "Item not Equipable...";
         }
+
+        public void Equip()
+        {
+            Console.WriteLine("Equipment equipped!");
+        }
+
+        public void ShowEquiped()
+        {
+            Console.WriteLine(Equipment.ToString());
+
+            /**
+            // print the equipment dictionary to console
+            string equipment = "";
+            foreach (KeyValuePair<string, string> kvp in Equipment)
+            {
+                equipment += string.Format("| {0} Slot: {1}", kvp.Key, kvp.Value);
+            }
+            // Console.WriteLine(equipment + " |");
+            **/
+        }
+
 
         private bool CheckEquipableArmor(string slot) 
         {

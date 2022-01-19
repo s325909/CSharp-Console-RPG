@@ -11,9 +11,13 @@ namespace ConsoleRPG.Characters
         // Constructor
         public Mage()
         {
-            // Character Attributes and Gains (STR, DEX, INT)
+            // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(1, 1, 8);
             LevelGains = new[] { 1, 1, 5 };
+
+            // Character Equipable Armor & Weapon Types 
+            EquipableArmorTypes = new[] { "Cloth" };
+            EquipableWeaponTypes = new[] { "Staff", "Wand" };
         }
     }
 }
