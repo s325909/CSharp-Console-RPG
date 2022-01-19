@@ -7,9 +7,8 @@ namespace ConsoleRPG.Characters
     {
         // Properties for Character Class
         public string ClassName { get; set; }
-        public int Level { get; set; }
-
-        public int[] Gains { get; set; }  
+        public int Level { get; set; } = 1;
+        public int[] LevelGains { get; set; }  
 
         public Attributes.Attribute BaseAttributes;
         public Attributes.Attribute TotalAttributes; 
@@ -18,11 +17,11 @@ namespace ConsoleRPG.Characters
 
         private void InitCharacter()
         {
+            // Get name of character class
             ClassName = GetType().Name;
-            Level = 1;
 
             //TotalAttributes = new Attributes.Attribute(0, 0, 0);
-            BaseAttributes = new Attributes.Attribute();
+            BaseAttributes = new();
 
             Equipment = new Dictionary<string, string>()
             {
@@ -60,9 +59,9 @@ namespace ConsoleRPG.Characters
 
         public void GainAttributes()
         {
-            int STR = Gains[0];
-            int DEX = Gains[1];
-            int INT = Gains[2];
+            int STR = LevelGains[0];
+            int DEX = LevelGains[1];
+            int INT = LevelGains[2];
             AddAttributes(STR, DEX, INT);
         }
 

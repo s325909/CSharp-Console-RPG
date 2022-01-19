@@ -8,7 +8,7 @@ namespace ConsoleRPG.Characters
         private void InitWariorAttributes()
         {
             AddAttributes(5, 2, 1); // (STR, DEX, INT)
-            Gains = new[] { 3, 2, 1 };
+            LevelGains = new[] { 3, 2, 1 };
         }
         
         // Constructor
