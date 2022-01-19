@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConsoleRPG.Attributes;
 
 
 namespace ConsoleRPG.Items
@@ -63,9 +64,9 @@ namespace ConsoleRPG.Items
             {
                 level = 1;
 
-                Weapons.Add(new Weapon("[Common] " + weapon, weapon, slots[3], level));
-                Weapons.Add(new Weapon("[Rare] " + weapon, weapon, slots[3], level += 4));
-                Weapons.Add(new Weapon("[Legendary] " + weapon, weapon, slots[3], level += 5));
+                Weapons.Add(new Weapon("[Common] " + weapon, weapon, slots[3], level, new WeaponAttribute(5, 1.1)));
+                Weapons.Add(new Weapon("[Rare] " + weapon, weapon, slots[3], level += 4, new WeaponAttribute(50, 5.5)));
+                Weapons.Add(new Weapon("[Legendary] " + weapon, weapon, slots[3], level += 5, new WeaponAttribute(125, 10.0)));
 
                 // level += 2;
             }
@@ -87,7 +88,7 @@ namespace ConsoleRPG.Items
 
             Console.WriteLine("\n");
 
-            foreach (Weapon weapon in Weapons) { Console.WriteLine("Weapon: " + weapon.ToString()); }
+            foreach (Weapon weapon in Weapons) { Console.WriteLine( "Weapon: " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond); }
         }
     }
 }

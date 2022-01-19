@@ -30,8 +30,9 @@ namespace ConsoleRPG.Characters
             ArmorAttributes = new();
             WeaponAttribute = new();
             TotalAttributes = new();
+            
 
-            Console.WriteLine("INIT EQUIPMENT");
+
             Equipment = new();
 
 
@@ -53,7 +54,7 @@ namespace ConsoleRPG.Characters
         public Character() 
         {
             InitCharacter();
-            Console.WriteLine($"A {ClassName} is born!");
+            Console.WriteLine($"\nA {ClassName} is born!\n");
         }
 
         public void TotalDamge ()
