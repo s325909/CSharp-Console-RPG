@@ -11,7 +11,6 @@ namespace ConsoleRPG.Attributes
 
         // Constructors
         public PrimeAttribute() { }
-
         public PrimeAttribute(int STR, int DEX, int INT) 
         {
             Strenght = STR;
