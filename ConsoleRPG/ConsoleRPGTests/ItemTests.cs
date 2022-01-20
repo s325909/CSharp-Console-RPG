@@ -1,14 +1,15 @@
 using System;
 using Xunit;
+using ConsoleRPG.Items;
 
-namespace ConsoleRPGTest
+namespace ConsoleRPGTests
 {
-    public class ConsoleRPGUnitTests
+    public class ItemTests 
     {
         [Fact]
         public void Test1()
         {
-
+            
         }
     }
 }
