@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using ConsoleRPG.Attributes;
 using ConsoleRPG.Exceptions;
 using ConsoleRPG.Items;
@@ -41,6 +42,7 @@ namespace ConsoleRPG.Characters
             BaseAttributes = new();
             ArmorAttributes = new();
             WeaponAttribute = new();
+            TotalAttributes = new();
 
             // Init Equipment
             Equipment = new();
@@ -48,7 +50,7 @@ namespace ConsoleRPG.Characters
 
         public abstract double CalculateTotalDamage();
 
-        public void CalculateTotalAttributes()
+        public PrimeAttribute CalculateTotalAttributes()
         {
             TotalAttributes = new();
             TotalAttributes.AddAttributes(BaseAttributes);
@@ -64,6 +66,7 @@ namespace ConsoleRPG.Characters
                     TotalAttributes.AddAttributes(armor.Attributes);
                 }
             }
+            return TotalAttributes;
         }
 
         public string PrintTotalAttributes()
@@ -92,13 +95,15 @@ namespace ConsoleRPG.Characters
 
         public void ShowAttributes()
         {
-            Console.WriteLine($"" +
-                $"\n[ {CharacterName} | Level {Level} | {ClassName} ]" +
-                $"\n[ Strength: {BaseAttributes.Strenght} ]" +
-                $"\n[ Dexterity: {BaseAttributes.Dexterity} ]" +
-                $"\n[ Intelligence: {BaseAttributes.Intelligence} ]" + 
-                $"\n[ Total ATTR: {PrintTotalAttributes()} ]" +
-                $"\n[ Total DMG: {CalculateTotalDamage()} ]"); 
+            StringBuilder stats = new StringBuilder();
+
+            stats.AppendLine($"Character: {CharacterName} | Level {Level} | {ClassName} ");
+            stats.AppendLine($"Strength: {CalculateTotalAttributes().Strenght}");
+            stats.AppendLine($"Dexterity: {CalculateTotalAttributes().Dexterity}");
+            stats.AppendLine($"Intelligence: {CalculateTotalAttributes().Intelligence}");
+            stats.AppendLine($"Damage: {CalculateTotalDamage()}");
+
+            Console.WriteLine(stats.ToString());
         }
 
         public string EquipableItemCheck(Item item)
