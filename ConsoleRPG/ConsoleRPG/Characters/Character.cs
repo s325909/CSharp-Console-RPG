@@ -151,11 +151,11 @@ namespace ConsoleRPG.Characters
             {
                 // Custom error thrown if weapon ItemLevel is too high
                 if (Level < item.ItemLevel) 
-                    throw new InvalidArmorException("Armor level requirment not met!");
+                    throw new InvalidWeaponException("Weapon level requirment not met!");
 
                 // Custom error thrown if weapon ItemType is not equipable 
                 if (!Array.Exists(EquipableWeaponTypes, type => type == item.ItemType))
-                    throw new InvalidArmorException("Weapon type is not equipable for the character class!");
+                    throw new InvalidWeaponException("Weapon type is not equipable for the character class!");
 
                 // Equip item to Equipment (Dictionary) 
                 Equipment.EquipmentSlots[item.ItemSlot] = item;
