@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using ConsoleRPG.Attributes;
 
 namespace ConsoleRPG.Items

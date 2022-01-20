@@ -8,19 +8,22 @@ namespace ConsoleRPG.Items
     {
         // Properties
         public PrimeAttribute Attributes { get; set; }
-        // public string[] Armors { get; set; }
-
 
         // Constructor
         public Armor(string name, string type, string slot, int level) : base(name, type, slot, level)
         {
-            // Armors = Enum.GetNames(typeof(ArmorTypes));
             Attributes = CalculateArmorAttributes(type, level);
         }
 
         // Armor Types
         public enum ArmorTypes { Cloth, Leather, Mail, Plate}
 
+        /// <summary>
+        /// provides weapons with various primary attributes based on weapon type and level requirment
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
         protected PrimeAttribute CalculateArmorAttributes(string type, int level)
         {
             int STR, DEX, INT;
@@ -38,7 +41,7 @@ namespace ConsoleRPG.Items
                     INT = 2;
                     return new(STR, DEX, INT);
                 case "Plate":
-                    STR = 7 * level;
+                    STR = 5 * level;
                     DEX = 2;
                     INT = 1;
                     return new(STR, DEX, INT);

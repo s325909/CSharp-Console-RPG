@@ -20,6 +20,9 @@ namespace ConsoleRPG
             this.InitVariables();
         }
 
+        /// <summary>
+        /// Runs the game and provides player with various gameplay options through console inputs
+        /// </summary>
         public void run()
         {
             CharacterCreation();
@@ -94,7 +97,7 @@ namespace ConsoleRPG
                         }
                         break;
                     case "3":
-                        player.GainAttributes();
+                        player.GainLevelAndAttributes();
                         break;
                     default:
                         break;

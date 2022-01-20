@@ -12,13 +12,12 @@ namespace ConsoleRPG.Attributes
         public int BaseDamage { get; set; }
         public double AttackSpeed { get; set; }
 
-        // Constructor
+        // Constructors
+        public WeaponAttribute() { }
         public WeaponAttribute(int damage, double speed)
         {
             BaseDamage = damage;
             AttackSpeed = speed;
         }
-
-        public WeaponAttribute() { }
     }
 }

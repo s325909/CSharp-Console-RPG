@@ -8,25 +8,17 @@ namespace ConsoleRPG.Items
     public class Equipment
     {
         // Properties
-        public EquipSlots Slots { get; set; }
+        public string[] Slots { get; set; }
         public Dictionary<string, Item> EquipmentSlots { get; set; }
-
         public List<Armor> Helmets { get; set; }
         public List<Armor> BodyPlates { get; set; }
         public List<Armor> Leggings { get; set; }
-
         public List<Weapon> Weapons { get; set; }
 
         // Constructor
         public Equipment()
         {
             InitBaseEquipments();
-
-            EquipmentSlots = new();
-
-            String[] slots = Enum.GetNames(typeof(EquipSlots));
-
-            foreach(string slot in slots) { EquipmentSlots.Add(slot, null); }
         }
 
         // Equipment Slots and Types
@@ -36,68 +28,49 @@ namespace ConsoleRPG.Items
 
 
         /// <summary>
-        /// Method to add basic sets of equipment for each slot
+        /// Method to add and generate basic sets of equipment for each slot
         /// </summary>
         private void InitBaseEquipments()
         {
+            // Init lists of items to store equipments 
+            EquipmentSlots = new();
             Helmets = new();
             BodyPlates = new();
             Leggings = new();
             Weapons = new();
 
-            String[] slots = Enum.GetNames(typeof(EquipSlots));
-            String[] armors = Enum.GetNames(typeof(ArmorTypes));
-            String[] weapons = Enum.GetNames(typeof(WeaponTypes));
+            // Assign equipment slots to slots array
+            Slots = Enum.GetNames(typeof(EquipSlots));
 
-            string[] rarity = { "[Common]", "[Rare]", "[Epic]", "[Legendary]"};
+            // Init Slots in Equipment Slots Dictionary as null value
+            foreach (string slot in Slots) { EquipmentSlots.Add(slot, null); }
 
-            int type = 0; 
-            int level = 1;
-            foreach (string armor in armors)
-            {
-                if (type == 0)
-                {
-                    AddHelmets(rarity, armor, slots[0], level);
-                    AddBodyPlates(rarity, armor, slots[1], level);
-                    AddLeggings(rarity, armor, slots[2], level);
-                }
+            // rarity and types of equipment
+            string[] rarity = { "[Common]", "[Rare]", "[Epic]", "[Legendary]" };
+            string[] armors = Enum.GetNames(typeof(ArmorTypes));
+            string[] weapons = Enum.GetNames(typeof(WeaponTypes));
 
-                if (type == 1)
-                {
-                    AddHelmets(rarity, armor, slots[0], level);
-                    AddBodyPlates(rarity, armor, slots[1], level);
-                    AddLeggings(rarity, armor, slots[2], level);
-                }
+            // Generate basic sets of armor equipment of rarity for each armor slot and type
+            foreach (string armor in armors) { GenerateBasicArmorSets(rarity, armor); }
 
-                if (type == 2)
-                {
-                    AddHelmets(rarity, armor, slots[0], level);
-                    AddBodyPlates(rarity, armor, slots[1], level);
-                    AddLeggings(rarity, armor, slots[2], level);
-                }
-
-                if (type == 3)
-                {
-                    AddHelmets(rarity, armor, slots[0], level);
-                    AddBodyPlates(rarity, armor, slots[1], level);
-                    AddLeggings(rarity, armor, slots[2], level);
-                }
-
-                level = 1;
-                type++;
-            }
-
+            // Generate basic weapons of rarity for each weapon slot and type
             foreach (string weapon in weapons)
             {
-                //int level = 1;
-                level = 1;
+                int level = 1;
 
-                Weapons.Add(new Weapon("[Common] " + weapon, weapon, slots[3], level, new WeaponAttribute(5, 1.1)));
-                Weapons.Add(new Weapon("[Rare] " + weapon, weapon, slots[3], level += 4, new WeaponAttribute(50, 5.5)));
-                Weapons.Add(new Weapon("[Legendary] " + weapon, weapon, slots[3], level += 5, new WeaponAttribute(125, 10.0)));
-
+                Weapons.Add(new Weapon("[Common] " + weapon, weapon, Slots[3], level, new WeaponAttribute(5, 1.1)));
+                Weapons.Add(new Weapon("[Rare] " + weapon, weapon, Slots[3], level += 4, new WeaponAttribute(50, 5.5)));
+                Weapons.Add(new Weapon("[Legendary] " + weapon, weapon, Slots[3], level += 5, new WeaponAttribute(125, 10.0)));
                 // level += 2;
             }
+        }
+
+        private void GenerateBasicArmorSets(string[] rarity, string armor)
+        {
+            Console.WriteLine($"ADDING 3 {armor} ARMOR");
+            AddHelmets(rarity, armor, Slots[0], 1);
+            AddBodyPlates(rarity, armor, Slots[1], 1);
+            AddLeggings(rarity, armor, Slots[2], 1);
         }
 
         private void AddHelmets(string[] rarity, string armor, string slot, int level)
@@ -176,13 +149,12 @@ namespace ConsoleRPG.Items
             {
                 Console.WriteLine($"\n({count}): " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
                 count++;
-                // Console.WriteLine("Weapon: " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
             }
         }
 
         public override string ToString()
         {
-            string str = "Equipped: ";
+            string str = "Items Equipped: ";
 
             String[] slots = Enum.GetNames(typeof(EquipSlots));
             foreach (string slot in slots) 
