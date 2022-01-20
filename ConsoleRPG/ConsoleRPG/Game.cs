@@ -27,7 +27,7 @@ namespace ConsoleRPG
 
             while (!this._gameOver)
             {
-                Console.WriteLine("0: Game Over | 1: Show Stats | 2: Show Equipment | 3: Level Up");
+                Console.WriteLine("| 0: Game Over | 1: Show Stats | 2: Show Equipment | 3: Level Up |");
                 switch (Console.ReadLine())
                 {
                     case "0":
@@ -39,10 +39,59 @@ namespace ConsoleRPG
                         player.ShowAttributes();
                         break;
                     case "2":
-                        Console.WriteLine("\nCASE 2: Show Equipment");
                         Items.Equipment equipment = new Items.Equipment();
-                        equipment.PrintEquipments();
-                        player.ShowEquiped();
+
+                        Console.WriteLine("| 0: Exit | 1: Show Equipped | 2: Show Armors | 3: Show Weapons |");
+
+                        switch (Console.ReadLine())
+                        {
+                            case "0":
+                                break;
+                            case "1":
+                                player.ShowEquiped();
+                                break;
+                            case "2":
+                                Console.WriteLine("| 0: Exit | 1: Head | 2: Body | 3: Legs |");
+
+                                switch (Console.ReadLine())
+                                {
+                                    case "0":
+                                        break;
+                                    case "1":
+                                        int count = equipment.Helmets.Count;
+                                        Console.WriteLine("HELMET COUNT: " + count);
+                                        equipment.PrintHelmets();
+
+                                        Console.WriteLine("Select Armor to Equip: ");
+
+                                        int index = Int16.Parse(Console.ReadLine());
+                                        var armor = equipment.Helmets[index];
+
+                                        player.EquipableItemCheck(armor);
+
+                                        // player.Equip;
+
+
+                                        break;
+                                    case "2":
+                                        equipment.PrintBodyPlates();
+                                        break;
+                                    case "3":
+                                        equipment.PrintLeggings();
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+
+                                // equipment.PrintEquipments();
+                                break;
+                            case "3":
+                                equipment.PrintWeapons();
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     case "3":
                         Console.WriteLine("\nCASE 3: Level Up");
@@ -83,6 +132,11 @@ namespace ConsoleRPG
                     break;
             }
             player.ShowAttributes();
+
+        }
+
+        private void ShowEquipments()
+        {
 
         }
     }

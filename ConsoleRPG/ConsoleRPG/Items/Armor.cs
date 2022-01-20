@@ -25,7 +25,7 @@ namespace ConsoleRPG.Items
         protected PrimeAttribute CalculateArmorAttributes(string type, int level)
         {
             int STR, DEX, INT;
-            STR = DEX = INT = 1;
+            STR = DEX = INT = 1 * level;
 
             switch (type)
             {

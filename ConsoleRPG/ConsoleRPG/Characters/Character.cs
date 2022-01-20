@@ -102,11 +102,13 @@ namespace ConsoleRPG.Characters
                     throw new InvalidArmorException("Armor level requirment not met!");
 
                 // Custom error thrown if armor ItemType is not equipable 
-                if (!Array.Exists(EquipableArmorTypes, type => type == slot))
+                if (!Array.Exists(EquipableArmorTypes, type => type == item.ItemType))
                     throw new InvalidArmorException("Armor type is not equipable for the character class!");
 
                 // Equip item to Equipment (Dictionary) 
                 Equipment.EquipmentSlots[slot] = item;
+
+                Console.WriteLine($"\n{item.ItemName} Equipped!\n"); 
 
                 return $"New Armor: {item.ItemName} Equipped!";
             }
