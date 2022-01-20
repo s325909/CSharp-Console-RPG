@@ -20,6 +20,9 @@ namespace ConsoleRPG
             this.InitVariables();
         }
 
+        /// <summary>
+        /// Runs the game and provides player with various gameplay options through console inputs
+        /// </summary>
         public void run()
         {
             CharacterCreation();
