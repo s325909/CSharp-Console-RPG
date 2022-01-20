@@ -7,7 +7,7 @@ namespace ConsoleRPG
     {
         private bool _gameOver { get; set; }
 
-        public Characters.Character player;
+        public Character player;
 
         private void InitVariables()
         {
@@ -27,7 +27,7 @@ namespace ConsoleRPG
 
             while (!this._gameOver)
             {
-                Console.WriteLine("(0): Game Over | (1): Show Stats | (2): Show Equipment | (3): Level Up |");
+                Console.WriteLine("\n(0): Game Over | (1): Show Stats | (2): Show Equipment | (3): Level Up |\n");
                 switch (Console.ReadLine())
                 {
                     case "0":
@@ -39,7 +39,7 @@ namespace ConsoleRPG
                     case "2":
                         Items.Equipment equipment = new Items.Equipment();
 
-                        Console.WriteLine("(0): Exit | (1): Show Equipped | (2): Show Armors | (3): Show Weapons |");
+                        Console.WriteLine("\n(0): Exit | (1): Show Equipped | (2): Show Armors | (3): Show Weapons |\n");
 
                         switch (Console.ReadLine())
                         {
@@ -49,7 +49,7 @@ namespace ConsoleRPG
                                 player.ShowEquiped();
                                 break;
                             case "2":
-                                Console.WriteLine("(0): Exit | (1): Head | (2): Body | (3): Legs ");
+                                Console.WriteLine("\n(0): Exit | (1): Head | (2): Body | (3): Legs\n");
 
                                 var index = 0;
 
@@ -84,6 +84,10 @@ namespace ConsoleRPG
                                 break;
                             case "3":
                                 equipment.PrintWeapons();
+                                Console.WriteLine("Select Weapon to Equip: ");
+                                index = Int16.Parse(Console.ReadLine());
+                                var weapon = equipment.Weapons[index]; 
+                                player.EquipableItemCheck(weapon); 
                                 break;
                             default:
                                 break;

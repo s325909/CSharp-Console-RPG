@@ -29,7 +29,6 @@ namespace ConsoleRPG.Characters
         public Character(string name) 
         {
             InitCharacter(name);
-            Console.WriteLine($"\nA {ClassName} is born!\n");
         }
 
         private void InitCharacter(string name)
@@ -122,7 +121,7 @@ namespace ConsoleRPG.Characters
                 if (Level < level) throw new InvalidArmorException("Armor level requirment not met!");
 
                 // Custom error thrown if weapon ItemType is not equipable 
-                if (!Array.Exists(EquipableWeaponTypes, type => type == slot))
+                if (!Array.Exists(EquipableWeaponTypes, type => type == item.ItemType))
                     throw new InvalidArmorException("Weapon type is not equipable for the character class!");
 
                 // Equip item to Equipment (Dictionary) 

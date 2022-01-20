@@ -146,7 +146,7 @@ namespace ConsoleRPG.Items
             int count = 0;
             foreach (Armor armor in Helmets) 
             {
-                Console.WriteLine($"({count}): " + armor.ToString() + PrintArmorStats(armor));
+                Console.WriteLine($"\n({count}): " + armor.ToString() + PrintArmorStats(armor));
                 count++;
             }   
         }
@@ -155,7 +155,7 @@ namespace ConsoleRPG.Items
             int count = 0;
             foreach (Armor armor in BodyPlates)
             {
-                Console.WriteLine($"({count}): " + armor.ToString() + PrintArmorStats(armor));
+                Console.WriteLine($"\n({count}): " + armor.ToString() + PrintArmorStats(armor));
                 count++;
             }
         }
@@ -164,21 +164,19 @@ namespace ConsoleRPG.Items
             int count = 0;
             foreach (Armor armor in Leggings)
             {
-                Console.WriteLine($"({count}): " + armor.ToString() + PrintArmorStats(armor));
+                Console.WriteLine($"\n({count}): " + armor.ToString() + PrintArmorStats(armor));
                 count++;
             }
         }
 
-        private string PrintArmorStats(Armor armor)
-        {
-            return " Stats: [ STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " ]\n";
-        }
-
         public void PrintWeapons()
         {
+            int count = 0;
             foreach (Weapon weapon in Weapons)
             {
-                Console.WriteLine("Weapon: " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
+                Console.WriteLine($"\n({count}): " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
+                count++;
+                // Console.WriteLine("Weapon: " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
             }
         }
 
@@ -195,6 +193,11 @@ namespace ConsoleRPG.Items
                 else str += $"\n{slot}: NONE";
             }
             return str;
+        }
+
+        private string PrintArmorStats(Armor armor)
+        {
+            return " Stats: [ STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " ]\n";
         }
     }
 }
