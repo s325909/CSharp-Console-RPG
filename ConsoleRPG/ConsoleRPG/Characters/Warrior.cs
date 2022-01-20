@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleRPG.Items;
 
 namespace ConsoleRPG.Characters
 {
@@ -14,6 +15,16 @@ namespace ConsoleRPG.Characters
             // Character Equipable Armor & Weapon Types 
             EquipableArmorTypes = new[] { "Mail", "Plate" };
             EquipableWeaponTypes = new[] { "Axe", "Hammer", "Sword" };
+        }
+        public override double CalculateTotalDamage()
+        {
+            double dps = 1;
+
+            var weapon = (Weapon)Equipment.EquipmentSlots["Weapon"];
+
+            if (weapon != null) dps = weapon.DamagePerSecond;
+
+            return dps * (1 + (double)TotalAttributes.Strenght / 100);
         }
     }
 }

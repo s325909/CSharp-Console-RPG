@@ -46,6 +46,8 @@ namespace ConsoleRPG.Characters
             Equipment = new();
         }
 
+        public abstract double CalculateTotalDamage();
+
         public void CalculateTotalAttributes()
         {
             TotalAttributes = new();
@@ -60,33 +62,14 @@ namespace ConsoleRPG.Characters
                 {
                     Armor armor = (Armor) equipment;
                     TotalAttributes.AddAttributes(armor.Attributes);
-                } else Console.WriteLine($"{slot}: NONE");
+                }
             }
-
-
-
-
-            TotalAttributes.AddAttributes(ArmorAttributes);
-            Console.WriteLine("TOTAL ARMOR STR: " + TotalAttributes.Strenght + " | " + ArmorAttributes.Strenght);
-
         }
 
-        public string GetTotalAttributes()
+        public string PrintTotalAttributes()
         {
             CalculateTotalAttributes();
             return $"STR: {TotalAttributes.Strenght} | DEX: {TotalAttributes.Dexterity} | INT: {TotalAttributes.Intelligence}";
-        }
-
-        public void TotalDamge ()
-        {
-            switch (ClassName)
-            {
-                case "Warior":
-                    // damage += BaseAttributes.Strenght * 1 %; 
-                    break;
-                default:
-                    break;
-            }
         }
 
         public void AddAttributes(int STR, int DEX, int INT)
@@ -114,7 +97,8 @@ namespace ConsoleRPG.Characters
                 $"\n[ Strength: {BaseAttributes.Strenght} ]" +
                 $"\n[ Dexterity: {BaseAttributes.Dexterity} ]" +
                 $"\n[ Intelligence: {BaseAttributes.Intelligence} ]" + 
-                $"\n[ Total: {GetTotalAttributes()} ]");
+                $"\n[ Total ATTR: {PrintTotalAttributes()} ]" +
+                $"\n[ Total DMG: {CalculateTotalDamage()} ]"); 
         }
 
         public string EquipableItemCheck(Item item)

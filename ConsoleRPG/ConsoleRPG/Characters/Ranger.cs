@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleRPG.Items;
 
 namespace ConsoleRPG.Characters
 {
@@ -18,6 +16,16 @@ namespace ConsoleRPG.Characters
             // Character Equipable Armor & Weapon Types 
             EquipableArmorTypes = new[] { "Leather", "Mail" };
             EquipableWeaponTypes = new[] { "Bow" };
+        }
+        public override double CalculateTotalDamage()
+        {
+            double dps = 1;
+
+            var weapon = (Weapon)Equipment.EquipmentSlots["Weapon"];
+
+            if (weapon != null) dps = weapon.DamagePerSecond;
+
+            return dps * (1 + (double)TotalAttributes.Dexterity / 100);
         }
     }
 }
