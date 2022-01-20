@@ -12,8 +12,8 @@ namespace ConsoleRPG.Characters
             LevelGains = new[] { 3, 2, 1 };
 
             // Character Equipable Armor & Weapon Types 
-            EquipableArmorTypes = new[] { "Axe", "Hammer", "Sword" };
-            EquipableWeaponTypes = new[] { "Mail", "Plate" };
+            EquipableArmorTypes = new[] { "Mail", "Plate" };
+            EquipableWeaponTypes = new[] { "Axe", "Hammer", "Sword" };
         }
     }
 }

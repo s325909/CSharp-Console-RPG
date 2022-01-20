@@ -53,31 +53,32 @@ namespace ConsoleRPG
                             case "2":
                                 Console.WriteLine("| 0: Exit | 1: Head | 2: Body | 3: Legs |");
 
+                                var index = 0;
+
                                 switch (Console.ReadLine())
                                 {
                                     case "0":
                                         break;
                                     case "1":
-                                        int count = equipment.Helmets.Count;
-                                        Console.WriteLine("HELMET COUNT: " + count);
                                         equipment.PrintHelmets();
-
                                         Console.WriteLine("Select Armor to Equip: ");
-
-                                        int index = Int16.Parse(Console.ReadLine());
-                                        var armor = equipment.Helmets[index];
-
-                                        player.EquipableItemCheck(armor);
-
-                                        // player.Equip;
-
-
+                                        index = Int16.Parse(Console.ReadLine());
+                                        var head = equipment.Helmets[index];
+                                        player.EquipableItemCheck(head);
                                         break;
                                     case "2":
                                         equipment.PrintBodyPlates();
+                                        Console.WriteLine("Select Armor to Equip: ");
+                                        index = Int16.Parse(Console.ReadLine());
+                                        var body = equipment.BodyPlates[index];
+                                        player.EquipableItemCheck(body);
                                         break;
                                     case "3":
                                         equipment.PrintLeggings();
+                                        Console.WriteLine("Select Armor to Equip: ");
+                                        index = Int16.Parse(Console.ReadLine());
+                                        var legs = equipment.Leggings[index];
+                                        player.EquipableItemCheck(legs);
                                         break;
                                     default:
                                         break;

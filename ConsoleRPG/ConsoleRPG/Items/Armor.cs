@@ -18,7 +18,6 @@ namespace ConsoleRPG.Items
             Attributes = CalculateArmorAttributes(type, level);
         }
 
-
         // Armor Types
         public enum ArmorTypes { Cloth, Leather, Mail, Plate}
 

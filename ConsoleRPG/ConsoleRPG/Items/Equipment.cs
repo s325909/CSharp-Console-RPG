@@ -181,5 +181,20 @@ namespace ConsoleRPG.Items
                 Console.WriteLine("Weapon: " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
             }
         }
+
+        public override string ToString()
+        {
+            string str = "Equipped: ";
+
+            String[] slots = Enum.GetNames(typeof(EquipSlots));
+            foreach (string slot in slots) 
+            {
+                var equipment = EquipmentSlots[slot];
+                if (equipment != null)
+                    str += "\n" + equipment.ToString();
+                else str += $"\n{slot}: NONE";
+            }
+            return str;
+        }
     }
 }
