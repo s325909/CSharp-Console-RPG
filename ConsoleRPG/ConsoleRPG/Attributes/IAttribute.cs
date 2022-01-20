@@ -10,7 +10,7 @@ namespace ConsoleRPG.Characters
     {
         // public abstract void AddAttributes();
 
-        public abstract void GainAttributes();
+        public abstract void GainLevelAndAttributes();
 
         public abstract void ShowAttributes();
     }

@@ -94,7 +94,7 @@ namespace ConsoleRPG
                         }
                         break;
                     case "3":
-                        player.GainAttributes();
+                        player.GainLevelAndAttributes();
                         break;
                     default:
                         break;
