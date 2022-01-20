@@ -144,7 +144,7 @@ namespace ConsoleRPG.Characters
                 Console.WriteLine($"\n{item.ItemName} Equipped!\n");
                 ShowEquiped();
 
-                return $"New Armor: {item.ItemName} Equipped!";
+                return $"New armor equipped!";
             }
 
             if (isWeapon)
@@ -163,7 +163,7 @@ namespace ConsoleRPG.Characters
                 Console.WriteLine($"\n{item.ItemName} Equipped!\n");
                 ShowEquiped();
 
-                return $"New Weapon: {item.ItemName} Equipped!";
+                return $"New weapon equipped!";
             }
 
             return "Item not Equipable...";
