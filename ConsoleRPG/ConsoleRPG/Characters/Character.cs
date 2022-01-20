@@ -79,7 +79,7 @@ namespace ConsoleRPG.Characters
 
         public void ShowAttributes()
         {
-            Console.WriteLine($"Class: {ClassName} | Level: {Level}\n" +
+            Console.WriteLine($"{ClassName} | Level: {Level}\n" +
                 $"Strength: {BaseAttributes.Strenght}\n" +
                 $"Dexterity: {BaseAttributes.Dexterity}\n" +
                 $"Intelligence: {BaseAttributes.Intelligence}\n");
