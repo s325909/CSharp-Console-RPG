@@ -4,16 +4,14 @@ namespace ConsoleRPG.Attributes
 {
     public class PrimeAttribute
     {
-        //Properties 
+        // Properties 
         public int Strenght { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
 
-        //Constructors
-        public PrimeAttribute()
-        {
+        // Constructors
+        public PrimeAttribute() { }
 
-        }
         public PrimeAttribute(int STR, int DEX, int INT) 
         {
             Strenght = STR;
@@ -21,6 +19,10 @@ namespace ConsoleRPG.Attributes
             Intelligence = INT;
         }
 
+        /// <summary>
+        /// Adds primary attributes to each character attributes (STR, DEX, INT)
+        /// </summary>
+        /// <param name="ATTR"></param>
         public void AddAttributes(PrimeAttribute ATTR)
         {
             Strenght += ATTR.Strenght;
