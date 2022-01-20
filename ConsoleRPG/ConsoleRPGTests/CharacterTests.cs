@@ -6,6 +6,7 @@ namespace ConsoleRPGTests
 {
     public class CharacterTests 
     {
+        #region New character level and level up
         [Fact]
         public void Chracter_NewCharacter_ShouldBeLevel1() 
         {
@@ -34,6 +35,10 @@ namespace ConsoleRPGTests
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        #endregion
+
+        #region New character primary base attributes 
 
         // Testing each character class primary attributes when created
 
@@ -97,7 +102,9 @@ namespace ConsoleRPGTests
             Assert.Equal(expected, actual);
         }
 
-        // Testing each character class primary attributes when levelling up
+        #endregion
+
+        #region Character level up and primary attribute gains 
 
         [Fact]
         public void Chracter_MagePrimeAttributeLevelGains_ShouldBeSumTotalAttributeGains()     
@@ -162,5 +169,7 @@ namespace ConsoleRPGTests
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        #endregion
     }
 }
