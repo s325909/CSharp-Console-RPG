@@ -23,7 +23,7 @@ namespace ConsoleRPG.Items
 
         public override string ToString()
         {
-            return $"ITEM: {ItemTypeName} | Name: {ItemName} | Slot: {ItemSlot} | Type: {ItemType} | LVL: {ItemLevel}";
+            return $"{ItemSlot}: LVL {ItemLevel} {ItemName} | Type: {ItemType} |";
         }
     }
 }

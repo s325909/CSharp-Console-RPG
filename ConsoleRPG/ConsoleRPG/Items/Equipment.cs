@@ -11,7 +11,7 @@ namespace ConsoleRPG.Items
         public EquipSlots Slots { get; set; }
         public Dictionary<string, Item> EquipmentSlots { get; set; }
 
-        public List<Armor> Helmets { get; set; } 
+        public List<Armor> Helmets { get; set; }
         public List<Armor> BodyPlates { get; set; }
         public List<Armor> Leggings { get; set; }
 
@@ -49,24 +49,47 @@ namespace ConsoleRPG.Items
             String[] armors = Enum.GetNames(typeof(ArmorTypes));
             String[] weapons = Enum.GetNames(typeof(WeaponTypes));
 
-            int level = 1;
-            string rarity = "[Common]";
+            string[] rarity = { "[Common]", "[Rare]", "[Epic]", "[Legendary]"};
 
+            int type = 0; 
+            int level = 1;
             foreach (string armor in armors)
             {
-                if (level > 1) rarity = "[Rare]";
-                if (level > 5) rarity = "[Legendary]";
+                if (type == 0)
+                {
+                    AddHelmets(rarity, armor, slots[0], level);
+                    AddBodyPlates(rarity, armor, slots[1], level);
+                    AddLeggings(rarity, armor, slots[2], level);
+                }
 
-                Helmets.Add(new Armor(rarity + " Helmet", armor, slots[0], level));
-                BodyPlates.Add(new Armor(rarity + " Chest Plate", armor, slots[1], level));
-                Leggings.Add(new Armor(rarity + " Leggings", armor, slots[2], level));
+                if (type == 1)
+                {
+                    AddHelmets(rarity, armor, slots[0], level);
+                    AddBodyPlates(rarity, armor, slots[1], level);
+                    AddLeggings(rarity, armor, slots[2], level);
+                }
 
-                level += 2;   
+                if (type == 2)
+                {
+                    AddHelmets(rarity, armor, slots[0], level);
+                    AddBodyPlates(rarity, armor, slots[1], level);
+                    AddLeggings(rarity, armor, slots[2], level);
+                }
+
+                if (type == 3)
+                {
+                    AddHelmets(rarity, armor, slots[0], level);
+                    AddBodyPlates(rarity, armor, slots[1], level);
+                    AddLeggings(rarity, armor, slots[2], level);
+                }
+
+                level = 1;
+                type++;
             }
-
 
             foreach (string weapon in weapons)
             {
+                //int level = 1;
                 level = 1;
 
                 Weapons.Add(new Weapon("[Common] " + weapon, weapon, slots[3], level, new WeaponAttribute(5, 1.1)));
@@ -77,28 +100,104 @@ namespace ConsoleRPG.Items
             }
         }
 
+        private void AddHelmets(string[] rarity, string armor, string slot, int level)
+        {
+            AddArmor(Helmets, rarity[0] + " Helmet", armor, slot, level);
+            AddArmor(Helmets, rarity[1] + " Helmet", armor, slot, level += 2);
+            AddArmor(Helmets, rarity[2] + " Helmet", armor, slot, level += 2);
+            // AddArmor(Helmets, rarity[3] + " Helmet", armor, slot, level += 5);
+        }
+        private void AddBodyPlates(string[] rarity, string armor, string slot, int level)
+        {
+            AddArmor(BodyPlates, rarity[0] + " Chest Plate", armor, slot, level);
+            AddArmor(BodyPlates, rarity[1] + " Chest Plate", armor, slot, level += 2);
+            AddArmor(BodyPlates, rarity[2] + " Chest Plate", armor, slot, level += 2);
+            // AddArmor(Helmets, rarity[3] + " Helmet", armor, slot, level += 5);
+        }
+        private void AddLeggings(string[] rarity, string armor, string slot, int level)
+        {
+            AddArmor(Leggings, rarity[0] + " Leggings", armor, slot, level);
+            AddArmor(Leggings, rarity[1] + " Leggings", armor, slot, level += 2);
+            AddArmor(Leggings, rarity[2] + " Leggings", armor, slot, level += 2);
+            // AddArmor(Helmets, rarity[3] + " Helmet", armor, slot, level += 5);
+        }
+
+        private void AddArmor(List<Armor> armors, string name, string type, string slot, int level)
+        {
+            armors.Add(new Armor(name, type, slot, level));
+        }
+
         public void PrintEquipments()
         {
             Console.WriteLine("\n");
 
-            foreach (Armor armor in Helmets)
-            {
-                Console.WriteLine("Helmet " + armor.ToString() + " | STATS: STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " |\n");
-            }
+            PrintHelmets();
 
-            foreach (Armor armor in BodyPlates) 
-            {
-                Console.WriteLine("Helmet " + armor.ToString() + " | STATS: STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " |\n");
-            }
+            PrintBodyPlates();
 
-            foreach (Armor armor in Leggings) 
-            {
-                Console.WriteLine("Helmet " + armor.ToString() + " | STATS: STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " |\n");
-            }
+            PrintLeggings();
 
             Console.WriteLine("\n");
 
-            foreach (Weapon weapon in Weapons) { Console.WriteLine( "Weapon: " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond); }
+            PrintWeapons();
+        }
+        public void PrintHelmets()
+        {
+            int count = 0;
+            foreach (Armor armor in Helmets) 
+            {
+                Console.WriteLine($"\n({count}): " + armor.ToString() + PrintArmorStats(armor));
+                count++;
+            }   
+        }
+        public void PrintBodyPlates()
+        {
+            int count = 0;
+            foreach (Armor armor in BodyPlates)
+            {
+                Console.WriteLine($"\n({count}): " + armor.ToString() + PrintArmorStats(armor));
+                count++;
+            }
+        }
+        public void PrintLeggings()
+        {
+            int count = 0;
+            foreach (Armor armor in Leggings)
+            {
+                Console.WriteLine($"\n({count}): " + armor.ToString() + PrintArmorStats(armor));
+                count++;
+            }
+        }
+
+        public void PrintWeapons()
+        {
+            int count = 0;
+            foreach (Weapon weapon in Weapons)
+            {
+                Console.WriteLine($"\n({count}): " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
+                count++;
+                // Console.WriteLine("Weapon: " + weapon.ToString() + " | DPS: " + weapon.DamagePerSecond);
+            }
+        }
+
+        public override string ToString()
+        {
+            string str = "Equipped: ";
+
+            String[] slots = Enum.GetNames(typeof(EquipSlots));
+            foreach (string slot in slots) 
+            {
+                var equipment = EquipmentSlots[slot];
+                if (equipment != null)
+                    str += "\n" + equipment.ToString();
+                else str += $"\n{slot}: NONE";
+            }
+            return str;
+        }
+
+        private string PrintArmorStats(Armor armor)
+        {
+            return " Stats: [ STR: " + armor.Attributes.Strenght + " DEX: " + armor.Attributes.Dexterity + " INT: " + armor.Attributes.Intelligence + " ]\n";
         }
     }
 }

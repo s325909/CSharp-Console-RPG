@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleRPG.Items;
 
 namespace ConsoleRPG.Characters
 {
     public class Rouge : Character
     {
         // Constructor
-        public Rouge()
+        public Rouge(string name) : base(name)
         {
             // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(2, 6, 1);
@@ -18,6 +16,16 @@ namespace ConsoleRPG.Characters
             // Character Equipable Armor & Weapon Types 
             EquipableArmorTypes = new[] { "Leather", "Mail" };
             EquipableWeaponTypes = new[] { "Dagger", "Sword" };
+        }
+        public override double CalculateTotalDamage()
+        {
+            double dps = 1;
+
+            var weapon = (Weapon)Equipment.EquipmentSlots["Weapon"];
+
+            if (weapon != null) dps = weapon.DamagePerSecond;
+
+            return dps * (1 + (double)TotalAttributes.Dexterity / 100);
         }
     }
 }
