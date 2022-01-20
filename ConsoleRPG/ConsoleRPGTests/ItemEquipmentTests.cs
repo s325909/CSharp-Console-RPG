@@ -88,7 +88,7 @@ namespace ConsoleRPGTests
 
         #endregion
 
-        #region Calculate damage with and without valid weapon and armor equipped
+        #region Calculate damage with and without valid items equipped
         [Fact]
         public void Damage_NewWariorWithoutWeaponEquipped_ShouldDealTotalDamage()   
         {

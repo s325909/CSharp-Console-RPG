@@ -6,7 +6,7 @@ namespace ConsoleRPGTests
 {
     public class CharacterTests 
     {
-        #region New character level and level up
+        #region New character level 1 and level up
         [Fact]
         public void Chracter_NewCharacter_ShouldBeLevel1() 
         {
@@ -38,9 +38,7 @@ namespace ConsoleRPGTests
 
         #endregion
 
-        #region New character primary base attributes 
-
-        // Testing each character class primary attributes when created
+        #region New characters with primary base attributes 
 
         [Fact]
         public void Chracter_NewMagePrimeAttributes_ShouldBeMageBaseAttributes()  
