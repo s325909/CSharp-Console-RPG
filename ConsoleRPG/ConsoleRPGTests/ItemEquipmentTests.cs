@@ -10,15 +10,6 @@ namespace ConsoleRPGTests
     public class ItemEquipmentTests  
     {
         Character testHero = new Warrior("CHAD");
-     
-        // Item testAxe = new Weapon("Common axe", "Axe", "Weapon", 2, new WeaponAttribute(7, 1.1));
-
-        // Item testBow = new Weapon("Common bow", "bow", "Weapon", 1, new WeaponAttribute(12, 0.8));
-
-        // Item testPlateBody = new Armor("Common plate body armor", "Armor", "Body", 2);
-
-        // Item testClothHeady = new Armor("Common cloth head armor", "Armor", "Head", 1);
-
 
         #region Equip a high level item 
         [Fact]
@@ -90,6 +81,54 @@ namespace ConsoleRPGTests
 
             // Act
             string actual = testHero.EquipableItemCheck(testPlateBody);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        #endregion
+
+        #region Calculate damage with and without valid weapon and armor equipped
+        [Fact]
+        public void Damage_NewWariorWithoutWeaponEquipped_ShouldDealTotalDamage()   
+        {
+            // Arrange
+            double expected = 1 * (1 + (5 / 100)); 
+
+            // Act
+            double actual = testHero.CalculateTotalDamage();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Damage_NewWariorWithValidWeaponEquipped_ShouldDealTotalDamage()   
+        {
+            // Arrange
+            Item testAxe = new Weapon("Common axe", "Axe", "Weapon", 1, new WeaponAttribute(7, 1.1));
+            testHero.EquipableItemCheck(testAxe);
+            double expected = (7 * 1.1) * (1 + (5 / 100));
+
+            // Act
+            double actual = testHero.CalculateTotalDamage();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Damage_NewWariorWithValidWeaponAndArmorEquipped_ShouldDealTotalDamage()  
+        {
+            // Arrange
+            Item testAxe = new Weapon("Common axe", "Axe", "Weapon", 1, new WeaponAttribute(7, 1.1));
+            Item testPlateBody = new Armor("Common plate body armor", "Plate", "Body", 1);
+            testHero.EquipableItemCheck(testAxe);
+            testHero.EquipableItemCheck(testPlateBody);
+            double expected = (7 * 1.1) * (1 + ((5 + 1) / 100));
+
+            // Act
+            double actual = testHero.CalculateTotalDamage();
 
             // Assert
             Assert.Equal(expected, actual);
