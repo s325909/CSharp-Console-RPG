@@ -42,10 +42,39 @@ namespace ConsoleRPG.Characters
             ArmorAttributes = new();
             WeaponAttribute = new();
 
-            // TotalAttributes = new();
-
             // Init Equipment
             Equipment = new();
+        }
+
+        public void CalculateTotalAttributes()
+        {
+            TotalAttributes = new();
+            TotalAttributes.AddAttributes(BaseAttributes);
+            
+            String[] slots = Enum.GetNames(typeof(Equipment.EquipSlots));
+            foreach (string slot in slots)
+            {
+                var equipment = Equipment.EquipmentSlots[slot];
+
+                if (equipment != null && equipment.GetType().Name.Equals("Armor"))
+                {
+                    Armor armor = (Armor) equipment;
+                    TotalAttributes.AddAttributes(armor.Attributes);
+                } else Console.WriteLine($"{slot}: NONE");
+            }
+
+
+
+
+            TotalAttributes.AddAttributes(ArmorAttributes);
+            Console.WriteLine("TOTAL ARMOR STR: " + TotalAttributes.Strenght + " | " + ArmorAttributes.Strenght);
+
+        }
+
+        public string GetTotalAttributes()
+        {
+            CalculateTotalAttributes();
+            return $"STR: {TotalAttributes.Strenght} | DEX: {TotalAttributes.Dexterity} | INT: {TotalAttributes.Intelligence}";
         }
 
         public void TotalDamge ()
@@ -84,7 +113,8 @@ namespace ConsoleRPG.Characters
                 $"\n[ {CharacterName} | Level {Level} | {ClassName} ]" +
                 $"\n[ Strength: {BaseAttributes.Strenght} ]" +
                 $"\n[ Dexterity: {BaseAttributes.Dexterity} ]" +
-                $"\n[ Intelligence: {BaseAttributes.Intelligence} ]");
+                $"\n[ Intelligence: {BaseAttributes.Intelligence} ]" + 
+                $"\n[ Total: {GetTotalAttributes()} ]");
         }
 
         public string EquipableItemCheck(Item item)
@@ -126,6 +156,8 @@ namespace ConsoleRPG.Characters
 
                 // Equip item to Equipment (Dictionary) 
                 Equipment.EquipmentSlots[slot] = item;
+
+                Console.WriteLine($"\n{item.ItemName} Equipped!\n");
 
                 return $"New Weapon: {item.ItemName} Equipped!";
             }

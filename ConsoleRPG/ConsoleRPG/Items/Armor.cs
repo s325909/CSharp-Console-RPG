@@ -31,16 +31,16 @@ namespace ConsoleRPG.Items
                 case "Cloth":
                     return new(STR, DEX, INT);
                 case "Leather":
-                    STR = DEX = INT = 3 * level;
+                    STR = DEX = INT = 2 * level;
                     return new(STR, DEX, INT);
                 case "Mail":
-                    STR = DEX = 5 * level;
-                    INT = 3;
+                    STR = DEX = 3 * level;
+                    INT = 2;
                     return new(STR, DEX, INT);
                 case "Plate":
                     STR = 7 * level;
-                    DEX = 5;
-                    INT = 3;
+                    DEX = 2;
+                    INT = 1;
                     return new(STR, DEX, INT);
                 default:
                     return new(STR, DEX, INT);
