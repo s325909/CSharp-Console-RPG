@@ -13,7 +13,7 @@ namespace ConsoleRPG.Characters
         public string ClassName { get; set; }
         public int Level { get; set; } = 1;
 
-        public int[] LevelGains { get; set; }
+        public int[] LevelAttributeGains { get; set; }
         public string[] EquipmentSlots { get; set; }
         public string[] EquipableArmorTypes { get; set; }
         public string[] EquipableWeaponTypes { get; set; }
@@ -49,6 +49,10 @@ namespace ConsoleRPG.Characters
 
         public abstract double CalculateTotalDamage();
 
+        /// <summary>
+        /// Calaculates total primary attributes character base attributes + equipped armor attributes
+        /// </summary>
+        /// <returns>Total Attributes</returns>
         public PrimeAttribute CalculateTotalAttributes()
         {
             // adds base primary attributes of character to total attributes
@@ -71,22 +75,26 @@ namespace ConsoleRPG.Characters
             return TotalAttributes;
         }
 
-        public string PrintTotalAttributes()
-        {
-            CalculateTotalAttributes();
-            return $"STR: {TotalAttributes.Strenght} | DEX: {TotalAttributes.Dexterity} | INT: {TotalAttributes.Intelligence}";
-        }
+        /// <summary>
+        /// Levels up chracter while adding character attribute gains to base primary attributes 
+        /// </summary>
         public void GainLevelAndAttributes()
         {
-            int STR = LevelGains[0];
-            int DEX = LevelGains[1];
-            int INT = LevelGains[2];
+            int STR = LevelAttributeGains[0];
+            int DEX = LevelAttributeGains[1];
+            int INT = LevelAttributeGains[2];
             AddAttributes(STR, DEX, INT);
 
             Level++;
             ShowAttributes();
         }
 
+        /// <summary>
+        /// Allows each character to add attribute gains to base primary attributes
+        /// </summary>
+        /// <param name="STR"></param>
+        /// <param name="DEX"></param>
+        /// <param name="INT"></param>
         public void AddAttributes(int STR, int DEX, int INT)
         {
             BaseAttributes.Strenght += STR;
@@ -94,6 +102,9 @@ namespace ConsoleRPG.Characters
             BaseAttributes.Intelligence += INT;
         }
 
+        /// <summary>
+        /// Uses StringBuilder to display character stats to console
+        /// </summary>
         public void ShowAttributes()
         {
             StringBuilder stats = new StringBuilder();
@@ -105,12 +116,15 @@ namespace ConsoleRPG.Characters
             Console.WriteLine(stats.ToString());
         }
 
+        /// <summary>
+        /// Checks to see if charater is worthy to equip an item to a given equipment slot
+        /// Throws custom exceptions if character is too low level or is not able to equip the type
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public string EquipableItemCheck(Item item)
         {
-            // int level = item.ItemLevel;
-            // string slot = item.ItemSlot;
-
-            // check if item is armor or weapon
+            // check if item is of armor or weapon type 
             bool isArmor = CheckEquipableArmor(item.ItemSlot);
             bool isWeapon = CheckEquipableWeapon(item.ItemSlot);
 
@@ -127,7 +141,8 @@ namespace ConsoleRPG.Characters
                 // Equip item to Equipment (Dictionary) 
                 Equipment.EquipmentSlots[item.ItemSlot] = item;
 
-                Console.WriteLine($"\n{item.ItemName} Equipped!\n"); 
+                Console.WriteLine($"\n{item.ItemName} Equipped!\n");
+                ShowEquiped();
 
                 return $"New Armor: {item.ItemName} Equipped!";
             }
@@ -146,6 +161,7 @@ namespace ConsoleRPG.Characters
                 Equipment.EquipmentSlots[item.ItemSlot] = item;
 
                 Console.WriteLine($"\n{item.ItemName} Equipped!\n");
+                ShowEquiped();
 
                 return $"New Weapon: {item.ItemName} Equipped!";
             }
@@ -156,10 +172,6 @@ namespace ConsoleRPG.Characters
         public void ShowEquiped()
         {
             Console.WriteLine(Equipment.ToString());
-        }
-        public void Equip()
-        {
-            Console.WriteLine("Equipment equipped!");
         }
 
         private bool CheckEquipableArmor(string slot) 

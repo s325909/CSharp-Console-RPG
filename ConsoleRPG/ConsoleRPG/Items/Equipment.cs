@@ -182,7 +182,7 @@ namespace ConsoleRPG.Items
 
         public override string ToString()
         {
-            string str = "Equipped: ";
+            string str = "Items Equipped: ";
 
             String[] slots = Enum.GetNames(typeof(EquipSlots));
             foreach (string slot in slots) 
