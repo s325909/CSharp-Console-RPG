@@ -38,7 +38,7 @@ namespace ConsoleRPGTests
         // Testing each character class primary attributes when created
 
         [Fact]
-        public void Chracter_NewMagePrimeAttributes_ShouldBeSTR1DEX1INT8()  
+        public void Chracter_NewMagePrimeAttributes_ShouldBeMageBaseAttributes()  
         {
             // Arrange
             Character testMage = new Mage("Gandalf");
@@ -53,7 +53,7 @@ namespace ConsoleRPGTests
         }
 
         [Fact]
-        public void Chracter_NewRangerPrimeAttributes_ShouldBeSTR1DEX7INT1() 
+        public void Chracter_NewRangerPrimeAttributes_ShouldBeRangerBaseAttributes() 
         {
             // Arrange
             Character testRanger = new Ranger("Kate Bishop");
@@ -68,7 +68,7 @@ namespace ConsoleRPGTests
         }
 
         [Fact]
-        public void Chracter_NewRougePrimeAttributes_ShouldBeSTR2DEX6INT1()  
+        public void Chracter_NewRougePrimeAttributes_ShouldBeRougeBaseAttributes()  
         {
             // Arrange
             Character testRouge = new Rouge("Shay Patrick Cormac");
@@ -83,7 +83,7 @@ namespace ConsoleRPGTests
         }
 
         [Fact]
-        public void Chracter_NewWariorPrimeAttributes_ShouldBeSTR5DEX2INT1()  
+        public void Chracter_NewWariorPrimeAttributes_ShouldBeWarriorBaseAttributes()   
         {
             // Arrange
             Character testWarrior = new Warrior("Chad");
@@ -100,7 +100,7 @@ namespace ConsoleRPGTests
         // Testing each character class primary attributes when levelling up
 
         [Fact]
-        public void Chracter_MagePrimeAttributeLevelGains_ShouldBeSTR2DEX2INT13()  
+        public void Chracter_MagePrimeAttributeLevelGains_ShouldBeSumTotalAttributeGains()     
         {
             // Arrange
             Character testMage = new Mage("Albert Dumblydore");
@@ -116,7 +116,7 @@ namespace ConsoleRPGTests
         }
 
         [Fact]
-        public void Chracter_RangerPrimeAttributeLevelGains_ShouldBeSTR2DEX12INT2()  
+        public void Chracter_RangerPrimeAttributeLevelGains_ShouldBeSumTotalAttributeGains()    
         {
             // Arrange
             Character testRanger = new Ranger("Hawkeye");
@@ -132,7 +132,7 @@ namespace ConsoleRPGTests
         }
 
         [Fact]
-        public void Chracter_RougePrimeAttributeLevelGains_ShouldBeSTR3DEX10INT2()  
+        public void Chracter_RougePrimeAttributeLevelGains_ShouldBeSumTotalAttributeGains()    
         {
             // Arrange
             Character testRouge = new Rouge("Sauron");
@@ -148,7 +148,7 @@ namespace ConsoleRPGTests
         }
 
         [Fact]
-        public void Chracter_NewWariorPrimeAttributeLevelGains_ShouldBeSTR8DEX4INT2()  
+        public void Chracter_NewWariorPrimeAttributeLevelGains_ShouldBeSumTotalAttributeGains()    
         {
             // Arrange
             Character testWarrior = new Warrior("Chad");
