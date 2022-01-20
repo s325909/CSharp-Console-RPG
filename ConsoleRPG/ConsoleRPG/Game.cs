@@ -103,21 +103,24 @@ namespace ConsoleRPG
 
         private void CharacterCreation()
         {
-            Console.WriteLine("Choose your Character Class\n" +
+            Console.WriteLine("\nYour name:");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("\nChoose your Character Class\n" +
                 "(1): Mage | (2): Ranger | (3): Rouge | (4): Warrior");
             switch (Console.ReadLine())
             {
                 case "1":
-                    player = new Mage();
+                    player = new Mage(name);
                     break;
                 case "2":
-                    player = new Ranger();
+                    player = new Ranger(name);
                     break;
                 case "3":
-                    player = new Rouge();
+                    player = new Rouge(name);
                     break;
                 case "4":
-                    player = new Warrior();
+                    player = new Warrior(name);
                     break;
                 default:
                     break;

@@ -9,7 +9,7 @@ namespace ConsoleRPG.Characters
     public class Rouge : Character
     {
         // Constructor
-        public Rouge()
+        public Rouge(string name) : base(name)
         {
             // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(2, 6, 1);

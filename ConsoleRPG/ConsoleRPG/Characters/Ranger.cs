@@ -9,7 +9,7 @@ namespace ConsoleRPG.Characters
     public class Ranger : Character
     {
         // Constructor
-        public Ranger()
+        public Ranger(string name) : base(name)
         {
             // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(1, 7, 1);

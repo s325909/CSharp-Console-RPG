@@ -8,6 +8,7 @@ namespace ConsoleRPG.Characters
     public abstract class Character : IAttribute, IEquip
     {
         // Properties for Character Class
+        public string CharacterName { get; set; } 
         public string ClassName { get; set; }
         public int Level { get; set; } = 1;
 
@@ -25,15 +26,16 @@ namespace ConsoleRPG.Characters
 
 
         // Constructors
-        public Character() 
+        public Character(string name) 
         {
-            InitCharacter();
+            InitCharacter(name);
             Console.WriteLine($"\nA {ClassName} is born!\n");
         }
 
-        private void InitCharacter()
+        private void InitCharacter(string name)
         {
-            // Get name of character class
+            // Name of character and class
+            CharacterName = name;
             ClassName = GetType().Name;
 
             // Init Attributes
@@ -79,10 +81,11 @@ namespace ConsoleRPG.Characters
 
         public void ShowAttributes()
         {
-            Console.WriteLine($"{ClassName} | Level: {Level}\n" +
-                $"Strength: {BaseAttributes.Strenght}\n" +
-                $"Dexterity: {BaseAttributes.Dexterity}\n" +
-                $"Intelligence: {BaseAttributes.Intelligence}\n");
+            Console.WriteLine($"" +
+                $"\n[ {CharacterName} | Level {Level} | {ClassName} ]" +
+                $"\n[ Strength: {BaseAttributes.Strenght} ]" +
+                $"\n[ Dexterity: {BaseAttributes.Dexterity} ]" +
+                $"\n[ Intelligence: {BaseAttributes.Intelligence} ]");
         }
 
         public string EquipableItemCheck(Item item)

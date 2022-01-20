@@ -9,7 +9,7 @@ namespace ConsoleRPG.Characters
     public class Mage : Character
     {
         // Constructor
-        public Mage()
+        public Mage(string name) : base(name)
         {
             // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(1, 1, 8);

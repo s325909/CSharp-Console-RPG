@@ -5,7 +5,7 @@ namespace ConsoleRPG.Characters
     public class Warrior : Character
     {   
         // Constructor
-        public Warrior()
+        public Warrior(string name) : base(name)
         {
             // Character Base Attributes & Gains (STR, DEX, INT)
             AddAttributes(5, 2, 1);
