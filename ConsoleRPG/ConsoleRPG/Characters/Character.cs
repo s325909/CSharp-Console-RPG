@@ -28,6 +28,7 @@ namespace ConsoleRPG.Characters
         public Character(string name) 
         {
             InitCharacter(name);
+            Console.WriteLine($"\nA {ClassName} is born!");
         }
 
         private void InitCharacter(string name)
@@ -108,7 +109,7 @@ namespace ConsoleRPG.Characters
         public void ShowAttributes()
         {
             StringBuilder stats = new StringBuilder();
-            stats.AppendLine($"Character: {CharacterName} | Level {Level} | {ClassName} ");
+            stats.AppendLine($"\nName: {CharacterName} [Level {Level} {ClassName}]");
             stats.AppendLine($"Strength: {CalculateTotalAttributes().Strenght}");
             stats.AppendLine($"Dexterity: {CalculateTotalAttributes().Dexterity}");
             stats.AppendLine($"Intelligence: {CalculateTotalAttributes().Intelligence}");

@@ -6,7 +6,7 @@ namespace ConsoleRPG
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Console RPG, your adventure starts here!");
+            Console.WriteLine("Welcome to Console RPG!");
 
             Game game = new();
             game.run();

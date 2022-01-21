@@ -67,7 +67,7 @@ namespace ConsoleRPG.Items
 
         private void GenerateBasicArmorSets(string[] rarity, string armor)
         {
-            Console.WriteLine($"ADDING 3 {armor} ARMOR");
+            // Console.WriteLine($"ADDING 3 {armor} ARMOR");
             AddHelmets(rarity, armor, Slots[0], 1);
             AddBodyPlates(rarity, armor, Slots[1], 1);
             AddLeggings(rarity, armor, Slots[2], 1);
