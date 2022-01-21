@@ -52,6 +52,7 @@ namespace ConsoleRPG
                                 player.ShowEquiped();
                                 break;
                             case "2":
+                                Console.WriteLine("Select Armor Slot");
                                 Console.WriteLine("\n(0): Exit | (1): Head | (2): Body | (3): Legs\n");
 
                                 var index = 0;
