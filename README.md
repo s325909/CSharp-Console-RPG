@@ -28,10 +28,18 @@ Each character can also equip varios items such as armor and weapons to the char
 The equipped items will alter the power of the character, causing it to deal more damage. Weapons have a **base damage**, and how many **attacks per second** can be performed with the weapon. The weapons **damage per second (DPS)** is calculated by multiplying these together.
 
 Certain characters can only equip certain item types: 
-* Mage - Armor: Cloth |  Weapons: Staff, Wand
-* Ranger - Armor: Leather, Mail | Weapons: Bow 
-* Rouge - Armor:  Leather, Mail | Weapons: Dagger, Sword
-* Warrior: Armor: Mai, Plate | Weapons: Axe, Hammer, Sword
+* Mage: 
+  * Armor: Cloth
+  * Weapons: Staff, Wand
+* Ranger:
+  * Armor: Leather, Mail
+  * Weapons: Bow 
+* Rouge: 
+  * Armor:  Leather, Mail
+  * Weapons: Dagger, Sword
+* Warrior: 
+  * Armor: Mai, Plate 
+  * Weapons: Axe, Hammer, Sword
 
 If a character tries to equip an item that is of too high level or the wrong item type, custom exceptions are thrown:
 * InvalidArmorException()
