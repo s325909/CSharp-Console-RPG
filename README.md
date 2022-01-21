@@ -1,9 +1,9 @@
 # CSharp-Console-RPG
 
-Simple overview of use/purpose.
+A console application built in C#
 
-## Description
-Plain C# used to create a console application of a text-based Role-Playing-Game (RPG) with various Character Classes:
+## Detailed Description
+Plain C# used to create a console application of a text-based-Role-Playing-Game (RPG) with various Character Classes:
 * Mage
 * Ranger
 * Rouge
